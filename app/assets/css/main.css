@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Eurostile";
+  src: url("../fonts/EurostileNextLTPro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eurostile";
+  src: url("../fonts/Eurostile LT Demi.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shekari";
+  src: url("../fonts/shekari.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #F18F00;
+  --color-main: #36393B;
+  --color-light-text: #B4B6B5;
+  --color-light-bg: #FFEECF;
+  --color-lightest-bg: #FFFFFF;
+}
+
+@theme static {
+  --font-title: "Eurostile", sans-serif;
+  --font-handwritten: "Caveat", cursive;
+  --font-paragraph: "Exo", sans-serif;
+}
+
+@source inline("font-title font-handwritten font-paragraph");
+
+[dir="rtl"] {
+  --font-title: "Almarai", sans-serif;
+  --font-handwritten: "Shekari", cursive;
+  --font-paragraph: "Almarai", sans-serif;
+}

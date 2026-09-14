@@ -1,0 +1,13 @@
+- get brand content
+- create ai context start with: PROJECT -> IMPLEMENTATION -> REFERENCES -> DESIGN -> UX -> SECTIONS -> CONTENT
+  - PROJECT: gather all brand contents from (social medial - catalogs - initial requerments ...)
+  - IMPLEMENTATION: tachnical stack (standard)
+  - REFERENCES: get some inspirations from other websites
+  - DESIGN: colors fonts
+  - UX: user experience like animation speed and transition duration and etc...
+  - SECTIONS: main sections of the website
+  - CONTENT: content of the website
+- pipeline is the orchestrator of the project
+- add images in folder and i told the ai extact the design from it and add it to references.md
+
+notes: LEARNINGS is expermental

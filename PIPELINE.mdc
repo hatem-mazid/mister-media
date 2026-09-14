@@ -1,0 +1,347 @@
+---
+alwaysApply: true
+---
+## DESIGN.md
+
+### Purpose
+
+Defines the visual design direction and design system of the website.
+
+### Contains
+
+* Visual direction
+* Design principles
+* Brand personality
+* Colors
+* Typography
+* Type scale
+* Spacing
+* Grid
+* Layout principles
+* Components
+* Imagery
+* Visual hierarchy
+* Motion principles
+* Responsive design principles
+
+### AI usage
+
+Use this file whenever making visual or interaction design decisions.
+
+The AI should maintain consistency with this file across all sections.
+
+Do not introduce visual styles that conflict with the established design direction without explaining why.
+
+---
+
+## CONTENT.md
+
+### Purpose
+
+Contains the approved and planned website content.
+
+### Contains
+
+* Headlines
+* Paragraphs
+* CTAs
+* Services descriptions
+* Project descriptions
+* Client information
+* About content
+* Navigation labels
+* Microcopy
+
+### AI usage
+
+Use this file as the primary source for website copy.
+
+Do not invent important client information, claims, statistics, services, or testimonials.
+
+If content is missing, use a clearly marked placeholder or ask for the required information.
+
+Content should not be changed merely to make a section visually easier to implement.
+
+---
+
+## UX.md
+
+### Purpose
+
+Defines how users navigate and interact with the website.
+
+### Contains
+
+* Information architecture
+* Navigation
+* User journey
+* Section hierarchy
+* CTA strategy
+* Interaction principles
+* User flows
+* Accessibility principles
+* Responsive behavior
+* Conversion considerations
+
+### AI usage
+
+Use this file when deciding how a user should move through the website or interact with a component.
+
+Design decisions should support the intended user journey rather than being purely decorative.
+
+---
+
+## SECTIONS.md
+
+### Purpose
+
+Defines the website structure and the role of every section.
+
+### Contains
+
+For each section:
+
+* Section name
+* Purpose
+* Content requirements
+* UX role
+* Design direction
+* Required elements
+* Relationships with other sections
+* Section status
+
+### AI usage
+
+Use this file to understand **what sections exist and why they exist**.
+
+Do not add, remove, or substantially change sections without explicit instruction or a clear UX/design reason.
+
+The website should be developed section by section.
+
+---
+
+## REFERENCES.md
+
+### Purpose
+
+Stores visual references and inspiration used during the design process.
+
+### Contains
+
+* Awwwards references
+* Website references
+* Screenshots
+* Section references
+* Animation references
+* Typography references
+* Layout references
+* Analysis of why a reference works
+* Elements worth adapting
+* Elements that should not be copied
+
+### AI usage
+
+References are sources of inspiration, not templates to copy.
+
+When a reference is provided, analyze its:
+
+* Composition
+* Hierarchy
+* Typography
+* Layout
+* Interaction
+* Motion
+* Visual language
+
+Extract useful principles and reinterpret them for the current project.
+
+Do not blindly reproduce a reference.
+
+---
+
+## IMPLEMENTATION.md
+
+### Purpose
+
+Defines the technical implementation of the website.
+
+### Contains
+
+* Framework
+* Architecture
+* Component structure
+* File structure
+* Dependencies
+* Responsive implementation
+* Animation implementation
+* Performance requirements
+* SEO implementation
+* Accessibility implementation
+* Technical decisions
+* Section implementation notes
+
+### AI usage
+
+Implementation must follow the approved design and UX rather than changing the design to make coding easier.
+
+Development should happen **section by section**.
+
+For each section, document:
+
+* Implementation approach
+* Components
+* Responsive behavior
+* Animations
+* Interactions
+* Technical considerations
+* Current status
+
+Do not unnecessarily introduce libraries or architectural complexity.
+
+Prefer simple, maintainable solutions.
+
+---
+
+## LEARNINGS.md
+
+### Purpose
+
+Contains accumulated lessons and corrections learned from previous DotStar projects and AI iterations.
+
+This is the project's continuous improvement layer.
+
+### Contains
+
+* Design lessons
+* UX lessons
+* Typography lessons
+* Animation lessons
+* Development lessons
+* AI behavior corrections
+* Common mistakes
+* Successful approaches
+* General principles discovered through previous projects
+
+### AI usage
+
+Read this before making design and implementation decisions.
+
+Treat these learnings as accumulated experience, not absolute rules.
+
+When a new correction is discovered, determine whether it is:
+
+**Project-specific** → add it to the appropriate project knowledge file.
+
+**General and reusable** → add it to `LEARNINGS.md`.
+
+The goal is for future DotStar projects to benefit from previous experience.
+
+---
+
+# File Priority
+
+When files contain conflicting information, use this priority:
+
+1. Explicit user/client instruction
+2. PROJECT.md
+3. DESIGN.md / UX.md / CONTENT.md
+4. SECTIONS.md
+5. REFERENCES.md
+6. IMPLEMENTATION.md
+7. LEARNINGS.md
+
+A newer explicit instruction always overrides a previous assumption.
+
+---
+
+# Section-Based Workflow
+
+The website should be developed one section at a time.
+
+For each section:
+
+### 1. Understand
+
+Read the relevant information from:
+
+* PROJECT.md
+* DESIGN.md
+* UX.md
+* CONTENT.md
+* SECTIONS.md
+* LEARNINGS.md
+
+### 2. Research
+
+Use REFERENCES.md and external references when needed.
+
+Analyze references rather than copying them.
+
+### 3. Design
+
+Determine:
+
+* Layout
+* Typography
+* Visual hierarchy
+* Content placement
+* Interaction
+* Animation
+* Responsive behavior
+
+### 4. Implement
+
+Update IMPLEMENTATION.md with the technical plan and implement the section.
+
+### 5. Review
+
+Inspect the actual result against:
+
+* Client requirements
+* Design direction
+* UX
+* Reference intent
+* Responsive behavior
+* Performance
+
+### 6. Learn
+
+If a reusable lesson or correction is discovered, add it to LEARNINGS.md.
+
+### 7. Iterate
+
+Make the necessary changes before moving to the next section.
+
+---
+
+# Important Rules
+
+* Do not redesign the entire website when working on one section.
+* Do not add unnecessary sections or features.
+* Do not copy references directly.
+* Do not invent client information.
+* Do not sacrifice design quality merely for implementation convenience.
+* Do not introduce unnecessary dependencies.
+* Preserve consistency between sections.
+* Prefer simple solutions over unnecessary complexity.
+* Treat user/client feedback as authoritative.
+* When a decision is uncertain, state the assumption before implementing it.
+* After significant feedback, update the appropriate knowledge file so the same mistake is not repeated.
+
+---
+
+# Current Workflow
+
+The current development workflow is:
+
+**Project Understanding**
+→ **Design Direction**
+→ **Section Research**
+→ **Section Design**
+→ **Section Implementation**
+→ **Visual Review**
+→ **Iteration**
+→ **Learning**
+→ **Next Section**
+
+The AI should always know which section is currently being developed and avoid making unrelated changes elsewhere.
