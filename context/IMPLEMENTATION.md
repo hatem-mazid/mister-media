@@ -406,9 +406,12 @@ Do not introduce a CMS or external content system unless explicitly approved.
 
 ### Current data
 
-- `app/data/services.ts` — service slugs (source of identity).
-- `app/composables/useServices.ts` — localized names and routes from i18n.
-- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`).
+- `app/data/services.ts` — service slugs, placeholder category icons, and swatch colors.
+- `app/composables/useServices.ts` — localized names, icons, colors, and routes from i18n.
+- `app/data/projects.ts` — project slugs, service links, cover media, masonry spans.
+- `app/composables/useProjects.ts` — localized names, service labels, and routes from i18n.
+- `app/data/clients.ts` — placeholder logo sources and intrinsic sizes from `app/assets/images/client-logos/`.
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`, `projects.items.*`, `clients.*`).
 
 ---
 
@@ -629,7 +632,7 @@ Single section component with a centered typographic headline and a full-bleed p
 - Type scales with `clamp(2.25rem, 5.8vw, 5.5rem)`.
 - Headline lines wrap and stay centered on small screens.
 - Strip height: 12rem → 16rem → 20rem → 24rem.
-- Strip direction is forced LTR so image order is stable in Arabic.
+- Strip track is forced LTR with `items-start` so image order and origin stay stable in Arabic.
 
 ### Animation
 - GSAP ScrollTrigger scrubs both strips as the hero leaves the viewport (`start: top top` → `end: bottom top`). The section is not pinned.
@@ -682,3 +685,95 @@ Two full-width diagonal ticker strips that cross in an X, directly below the her
 ### Assumptions
 - Extra reference phrases (years of experience, customer counts, job titles) are not used.
 - Service detail pages remain empty shells until that section is implemented.
+
+---
+
+## 26. Home — Featured Projects
+
+### Status
+Implemented (first pass).
+
+### Approach
+Editorial masonry wall of featured projects directly below the service bands. Imagery is the primary element until hover. Name, category pill, and a circular arrow appear together with a primary-color overlay. Composition uses mixed CSS Grid spans rather than identical cards. Optional `motionSrc` on a project (gif/webp or mp4/webm) replaces the still cover on hover. Copy lives in i18n; identity lives in `app/data/projects.ts`. Category icons and swatch colors live on the service records as placeholders.
+
+### Components
+- `app/components/sections/FeaturedProjectsSection.vue`
+- `app/components/ui/ProjectTile.vue`
+- `app/components/ui/CategoryPill.vue` — capsule chip, leading circular icon, category name. Icon and color come from `app/data/services.ts`.
+- `app/components/ui/SectionHeading.vue` — reusable title + handwritten lockup from `refs/header.png`.
+- `app/composables/useProjects.ts`
+- `app/data/projects.ts`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- XL fluid container (`max-w-[90rem]`).
+- 12 featured tiles in an asymmetric 12-column grid on large screens.
+- Visible heading **Our Works** with handwritten **featured**, masonry wall, then a centered **View All Projects** primary button to `/projects`.
+- Tiles are large rounded media (`rounded-3xl`). Default state is image-only.
+
+### Typography
+- Title face for the section heading (`UiSectionHeading`) and project names. Heading scales with `clamp(1.875rem, 4.2vw, 3.5rem)` so it stays below the hero h1 max of `5.5rem` / 88px.
+- Handwritten + primary color overlapping the end of the title (featured / مميزة).
+- Paragraph face for the category pill label.
+
+### Responsive
+- Mobile: single column, hero and tall tiles span two rows.
+- `sm`: 2 columns with mixed row spans.
+- `md`: 6 columns.
+- `lg+`: 12-column editorial composition.
+- Tile row height scales from `16rem` to `17rem`.
+
+### Animation
+- GSAP ScrollTrigger stagger (`y` + `autoAlpha`) when the section enters view.
+- CSS hover / focus-visible: image scale, primary overlay (`bg-primary/75`), caption and category pill fade in, arrow rotate/scale.
+- Motion media (when supplied) fades in on hover/focus and plays if it is video.
+- Animation is skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- Project titles are generic placeholders, not client names.
+- Cover images are picsum placeholders keyed by seed.
+- No `motionSrc` values are set until real motion assets are supplied.
+- Category icon names and hex colors are placeholders and can be replaced in `app/data/services.ts` without layout changes.
+- Project detail pages remain empty shells until that section is implemented.
+
+---
+
+## 27. Home — Client logos
+
+### Status
+Implemented (first pass).
+
+### Approach
+Two full-bleed logo rows below featured projects. Continuous `UiMarquee` tickers: top row travels left, bottom row travels right. Placeholder Logoipsum SVGs live in `app/assets/images/client-logos/` and are listed in `app/data/clients.ts` so they can be replaced later without layout changes. Copy lives in i18n. Individual client names are not shown.
+
+### Components
+- `app/components/sections/ClientLogosSection.vue`
+- `app/components/ui/Marquee.vue`
+- `app/data/clients.ts`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- Section heading **Our Clients** with handwritten **trusted**, then two overflowing rows.
+- Logos keep a shared height (`h-8` → `md:h-12`) and intrinsic width.
+- Bottom row is offset in the source order so the two rows do not line up.
+- Track direction is forced LTR so the rows stay stable in Arabic.
+
+### Typography
+- Title face for the section heading (`UiSectionHeading`). Heading scales with `clamp(1.875rem, 4.2vw, 3.5rem)`.
+- Handwritten + primary color overlapping the end of the title (trusted / موثوقون).
+
+### Responsive
+- Logo height: 2rem → 2.5rem → 3rem.
+- Horizontal gap via logo side margins: `mx-6` → `md:mx-10`.
+- Row gap: `gap-8` → `md:gap-12`.
+
+### Animation
+- `UiMarquee` (rAF, segment recycle) — not CSS animation, not scroll-scrubbed.
+- Duration is 40s per segment so the loop stays slow and seamless.
+- Top row travels left; bottom row travels right (`reverse`).
+- Animation is skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- Logo files are Logoipsum placeholders, not real clients.
+- No client names, links, or alt text until real marks and names are supplied.
+- Replacing a file in `app/data/clients.ts` should not require changing the section layout.

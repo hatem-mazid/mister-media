@@ -38,5 +38,28 @@
       "web-design": "تصميم المواقع",
       "exhibition-planning-preparation": "تخطيط وإعداد المعارض"
     }
+  },
+  "clients": {
+    "heading": "عملاؤنا",
+    "headingAccent": "موثوقون"
+  },
+  "projects": {
+    "heading": "أعمالنا",
+    "headingAccent": "مميزة",
+    "viewAll": "عرض كل المشاريع",
+    "items": {
+      "brand-identity-system": "نظام الهوية البصرية",
+      "product-packaging": "تغليف المنتج",
+      "print-production": "إنتاج مطبوعات",
+      "digital-campaign": "حملة رقمية",
+      "graphic-series": "سلسلة جرافيكية",
+      "website-design": "تصميم موقع",
+      "motion-film": "فيلم حركي",
+      "exhibition-stand": "جناح معرض",
+      "pack-production": "إنتاج التغليف",
+      "visual-language": "اللغة البصرية",
+      "generated-film": "فيلم مولّد",
+      "social-campaign": "حملة اجتماعية"
+    }
   }
 }

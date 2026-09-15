@@ -79,6 +79,16 @@ Project category chip: capsule pill with a leading circular icon on a primary (`
 
 Ignore scattered layout, extra rings/shadows, page background, typeface, and non-primary icon colors in the reference.
 
+## Section heading — `refs/header.png`
+
+Reusable section lockup used across the site.
+
+- Large title in the title face: dark (`#36393B`), tight tracking, uppercase for Latin.
+- Handwritten accent in primary (`#F18F00`) sitting on the bottom of the title, aligned to the end of the lockup and overlapping it slightly.
+- Optional faint stroke-only echo word behind the title. Omit the echo when no supporting word is supplied.
+
+Ignore typeface, page background, and the specific words in the reference (SOCIAL / media / POSTS).
+
 ## Testimonial card — `refs/testimonials card.png`
 
 Card structure:
@@ -88,3 +98,55 @@ Card structure:
 3. Bottom row: circular photo, then name and position (company when available)
 
 Content is placeholder until testimonials are supplied (PROJECT.md). Ignore card fill, typeface, and the peeking next card.
+
+## Featured Projects — Large Editorial / Masonry Project Wall
+
+### Concept
+
+A large editorial-style project wall that presents Mister Media's portfolio primarily through imagery rather than traditional project cards.
+
+The section should feel like a curated visual gallery, with projects arranged in an asymmetric masonry/editorial composition instead of a uniform grid.
+
+### Visual Direction
+
+* Use large project images as the primary visual element.
+* Mix different image sizes and proportions to create an editorial composition.
+* Avoid making every project look like an identical card.
+* Use generous spacing and intentional asymmetry.
+* Let the project imagery communicate the work; avoid long project descriptions.
+* Keep project information minimal: project name, category/service, and a simple interaction indicator if needed.
+* The composition should feel dynamic and creative while remaining clean and easy to scan.
+* The number of displayed projects can be relatively high to communicate the breadth of Mister Media's portfolio.
+
+### Interaction
+
+Projects should feel interactive without becoming visually heavy.
+
+Possible interactions:
+
+* Subtle image movement or scale on hover.
+* Project name/category appearing or becoming more prominent on hover.
+* A simple arrow or visual indicator showing that the project is clickable.
+
+Interactions should support the portfolio rather than distract from the work.
+
+### Homepage Role
+
+The section should showcase a broad selection of Mister Media's work rather than only a small number of case studies.
+
+It should communicate:
+
+* Creative range
+* Branding and graphic design capability
+* Packaging and printing expertise
+* Digital and marketing work
+* Quality of execution
+* Experience across different types of projects
+
+End the section with a clear **View All Projects** CTA leading to the complete portfolio.
+
+### Reference Principle
+
+Use the editorial/masonry approach as inspiration for composition, hierarchy, spacing, and visual rhythm.
+
+Do not copy the exact layout of any reference. Adapt the principle to Mister Media's brand, available project media, responsive behavior, and overall website direction.

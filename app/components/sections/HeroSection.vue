@@ -180,7 +180,7 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <div class="flex w-full shrink-0 flex-col gap-2 overflow-hidden px-0 pb-6 md:pb-8">
+    <div dir="ltr" class="flex w-full shrink-0 flex-col items-start gap-2 overflow-hidden px-0 pb-6 md:pb-8">
       <div
         ref="stripRef"
         dir="ltr"

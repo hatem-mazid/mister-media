@@ -13,5 +13,9 @@ useSeoMeta({
   <main>
     <SectionsHeroSection />
     <SectionsServiceBandsSection />
+    <SectionsFeaturedProjectsSection />
+    <SectionsClientLogosSection />
+
+    <div class="h-screen bg-light-bg"></div>
   </main>
 </template>

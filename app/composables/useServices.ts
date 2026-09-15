@@ -8,6 +8,8 @@ export function useServices() {
     services.map(service => ({
       slug: service.slug,
       name: t(`services.items.${service.slug}`),
+      icon: service.icon,
+      color: service.color,
       to: localePath(`/services/${service.slug}`),
     })),
   )

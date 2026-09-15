@@ -64,6 +64,41 @@ Separator: ●
 
 Do not add extra ticker phrases (experience counts, job titles, customer counts).
 
+## Home — Featured Projects
+
+Editorial project wall. Titles are placeholders until real project names are supplied.
+
+### Heading
+- EN: Our Works + handwritten featured
+- AR: أعمالنا + handwritten مميزة
+
+### CTA
+- EN: View All Projects / AR: عرض كل المشاريع → Projects page
+
+### Placeholder projects
+- Brand Identity System / نظام الهوية البصرية — Logo Design & Visual Identity
+- Product Packaging / تغليف المنتج — Graphic Design & Packaging Design
+- Print Production / إنتاج مطبوعات — Printing & Packaging
+- Digital Campaign / حملة رقمية — Digital Marketing
+- Graphic Series / سلسلة جرافيكية — Graphic Design & Packaging Design
+- Website Design / تصميم موقع — Web Design
+- Motion Film / فيلم حركي — Video Editing & Production
+- Exhibition Stand / جناح معرض — Exhibition Planning & Preparation
+- Pack Production / إنتاج التغليف — Printing & Packaging
+- Visual Language / اللغة البصرية — Logo Design & Visual Identity
+- Generated Film / فيلم مولّد — AI generated videos
+- Social Campaign / حملة اجتماعية — Digital Marketing
+
+Do not invent client names, case-study claims, or project descriptions.
+
+## Home — Client logos
+
+Two full-width rows of logos below featured work. Logos are placeholders until real client marks are supplied. Do not invent client names.
+
+### Heading
+- EN: Our Clients + handwritten trusted
+- AR: عملاؤنا + handwritten موثوقون
+
 ## SEO
 - EN title: Mister Media — Creative & Marketing Agency
 - EN description: Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing.

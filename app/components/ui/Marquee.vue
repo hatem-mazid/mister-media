@@ -153,6 +153,8 @@ async function setup() {
   stop()
   await nextTick()
   if (document.fonts?.ready) await document.fonts.ready
+  const images = [...(sourceRef.value?.querySelectorAll('img') ?? [])]
+  await Promise.all(images.map(image => image.decode().catch(() => undefined)))
   if (id !== setupId) return
   fillTrack()
   start()

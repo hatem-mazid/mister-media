@@ -38,5 +38,28 @@
       "web-design": "Web Design",
       "exhibition-planning-preparation": "Exhibition Planning & Preparation"
     }
+  },
+  "clients": {
+    "heading": "Our Clients",
+    "headingAccent": "trusted"
+  },
+  "projects": {
+    "heading": "Our Works",
+    "headingAccent": "featured",
+    "viewAll": "View All Projects",
+    "items": {
+      "brand-identity-system": "Brand Identity System",
+      "product-packaging": "Product Packaging",
+      "print-production": "Print Production",
+      "digital-campaign": "Digital Campaign",
+      "graphic-series": "Graphic Series",
+      "website-design": "Website Design",
+      "motion-film": "Motion Film",
+      "exhibition-stand": "Exhibition Stand",
+      "pack-production": "Pack Production",
+      "visual-language": "Visual Language",
+      "generated-film": "Generated Film",
+      "social-campaign": "Social Campaign"
+    }
   }
 }
