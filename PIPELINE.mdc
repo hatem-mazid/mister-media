@@ -64,33 +64,6 @@ Content should not be changed merely to make a section visually easier to implem
 
 ---
 
-## UX.md
-
-### Purpose
-
-Defines how users navigate and interact with the website.
-
-### Contains
-
-* Information architecture
-* Navigation
-* User journey
-* Section hierarchy
-* CTA strategy
-* Interaction principles
-* User flows
-* Accessibility principles
-* Responsive behavior
-* Conversion considerations
-
-### AI usage
-
-Use this file when deciding how a user should move through the website or interact with a component.
-
-Design decisions should support the intended user journey rather than being purely decorative.
-
----
-
 ## SECTIONS.md
 
 ### Purpose

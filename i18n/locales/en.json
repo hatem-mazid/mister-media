@@ -1,1 +1,29 @@
-{}
+{
+  "seo": {
+    "homeTitle": "Mister Media — Creative & Marketing Agency",
+    "homeDescription": "Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing."
+  },
+  "nav": {
+    "logoAlt": "Mister Media",
+    "letsTalk": "Let's Talk",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Site menu",
+    "links": {
+      "home": "Home",
+      "projects": "Projects",
+      "services": "Services"
+    }
+  },
+  "hero": {
+    "eyebrow": "Trusted by +50 client",
+    "from": "From",
+    "idea": "Idea",
+    "to": "to",
+    "execution": "Execution",
+    "forBrands": "for Brands around the",
+    "world": "World",
+    "ourWorks": "Our Works",
+    "contactUs": "Contact Us"
+  }
+}

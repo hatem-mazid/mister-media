@@ -5,6 +5,20 @@
 
 # References
 
+## Nav header — `refs/top-bar.png`
+
+Site header. Inset floating bar (not edge-to-edge) with a frosted/blurred background. Logo on the left, compact action cluster on the right. The middle stays empty.
+
+Left: Mister Media logo (mascot + wordmark).
+
+Right, as one group:
+- Text CTA: **Let's Talk** (primary contact action — WhatsApp, PROJECT.md). Larger and bold. The apostrophe is primary (`#F18F00`).
+- Circular menu button: dark fill (`#36393B`), white bars. Three unequal right-aligned bars (medium / short / long). On hover the bars animate to equal length.
+
+No page links in the bar itself; navigation is behind the menu button.
+
+Ignore typeface and page background.
+
 ## Hero headline — `refs/hero.png`
 
 Centered headline with circular images sitting inline between words (not beside the block). Images are small rounded (near-circle) photos that break the sentence, matching the word height.
@@ -13,11 +27,11 @@ Eyebrow above the headline:
 - Overlapping circular placeholder avatars (images to be added later)
 - Label: **Trusted by +50 client**
 
-Headline copy (from PROJECT.md — idea → execution, brands, Turkey):
+Headline copy (from PROJECT.md — idea → execution, international brands):
 
 From `[rounded image]` Idea
 to `[rounded image]` Execution
-for Brands based in Turkey, `[rounded image]` TR
+for Brands around the `[rounded image]` World
 
 Ignore other hero elements in the reference (nav, badge, subcopy, CTA, page background, typeface).
 

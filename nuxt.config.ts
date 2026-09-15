@@ -9,9 +9,19 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
+    'lenis/nuxt',
   ],
 
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    'lenis/dist/lenis.css',
+  ],
+
+  runtimeConfig: {
+    public: {
+      whatsappUrl: 'https://wa.me/',
+    },
+  },
 
   vite: {
     plugins: [tailwindcss()],
@@ -32,9 +42,14 @@ export default defineNuxtConfig({
     ],
   },
 
+  image: {
+    domains: ['picsum.photos', 'fastly.picsum.photos'],
+  },
+
   i18n: {
     strategy: 'prefix',
     defaultLocale: 'en',
+    langDir: 'locales',
     locales: [
       {
         code: 'en',
@@ -46,7 +61,7 @@ export default defineNuxtConfig({
       {
         code: 'ar',
         language: 'ar',
-        name: 'Arabic',
+        name: 'العربية',
         dir: 'rtl',
         file: 'ar.json',
       },

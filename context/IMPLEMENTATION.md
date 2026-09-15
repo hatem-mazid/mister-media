@@ -282,6 +282,14 @@ Smooth scrolling must not interfere with:
 
 Lenis configuration should remain simple unless the design requires additional behavior.
 
+### Current Implementation
+
+- The official `lenis/nuxt` module registers `VueLenis` and `useLenis`.
+- Root Lenis is created in `app.vue` and driven by the GSAP ticker so ScrollTrigger stays in sync.
+- Recommended Lenis CSS is loaded globally.
+- Anchor links, reduced-motion, and mobile-menu overflow locking are handled with Lenis options (`anchors`, default `respectReducedMotion`, `autoToggle`) plus `lenis.stop()` / `lenis.start()` when the header menu is open.
+- Route changes reset scroll immediately and refresh ScrollTrigger after the page finishes.
+
 ---
 
 ## 10. Image Handling
@@ -357,7 +365,21 @@ Navigation must support:
 
 Language switching should use Nuxt i18n.
 
-Navigation behavior and visual design will be defined by the approved references and section implementation.
+### Status
+Implemented (first pass). Visual from `REFERENCES.md` nav header.
+
+### Approach
+Fixed inset header bar (`top`/`inset-x` offsets) in the default layout, not edge-to-edge. Frosted translucent background. Logo left, WhatsApp text CTA + circular menu button right. Page links live in a full-screen menu, not in the bar.
+
+Hamburger bars are unequal and right-aligned; they animate to equal width on hover and to an X when open. Menu items stagger in with GSAP on open.
+
+### Components
+- `app/components/navigation/SiteHeader.vue`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Notes
+- WhatsApp URL is `runtimeConfig.public.whatsappUrl` (`NUXT_PUBLIC_WHATSAPP_URL`). Placeholder until the client number is supplied.
+- Logo is cropped from `refs/top-bar.png` into `public/images/logo.png` until a source logo file is provided.
 
 ---
 
@@ -556,3 +578,60 @@ The website should be structured so AI search and answer engines can clearly und
 - Support GEO across English and Arabic, with Turkish possible later.
 - Use meaningful internal links between related projects, services, and pages.
 - Do not use keyword stuffing, artificial content, or unnecessary FAQs.
+
+---
+
+## 23. Placeholder Assets
+
+During implementation, images and icons should initially use placeholders.
+
+- Use clear placeholder images where final imagery is not available.
+- Use placeholder icons where the final icon has not been selected.
+- Do not spend implementation time searching for final assets.
+- Placeholder assets will be replaced with the final project assets later.
+- Keep the implementation structured so replacing a placeholder does not require changing the component layout.
+
+---
+
+## 24. Home — Hero
+
+### Status
+Implemented (first pass). Site header is a separate layout component.
+
+### Approach
+Single section component with a centered typographic headline and a full-bleed portrait strip. Copy lives in Nuxt i18n locale files. Images are picsum placeholders keyed by seed so they can be replaced later without layout changes.
+
+### Components
+- `app/components/sections/HeroSection.vue`
+- `app/components/ui/Button.vue` — `primary` pill, `secondary` outline pill, and `text` (header Let’s Talk). Hover uses a fast GSAP `back.out` spring scale; the primary arrow rotates with the same ease. Nearby pointer movement magnetically pulls the button toward the cursor (`magnetic`, `magnetPad`, `magnetStrength` props) and springs back when it leaves. Let’s Talk sets `magnetic` to false. Skipped for touch and reduced motion.
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- Upper headline block uses extra vertical padding (`pt-32 pb-20` / `md:pt-40 md:pb-24`); it is not a full viewport.
+- Headline is a 3-line centered composition with circular images inline between words.
+- Two CTAs sit below the headline: **Our Works** (primary → `/projects`) and **Contact Us** (secondary → WhatsApp).
+- Two horizontal rows of 3:4 tiles, overflowing the viewport on both sides.
+
+### Typography
+- Title face (Eurostile / Almarai) for the headline structure.
+- Handwritten + primary color on “Idea”.
+- Title + primary color on “Execution”.
+- Light text color on connecting phrases (“to”, “for Brands around the”).
+
+### Responsive
+- Type scales with `clamp(2.25rem, 5.8vw, 5.5rem)`.
+- Headline lines wrap and stay centered on small screens.
+- Strip height: 12rem → 16rem → 20rem → 24rem.
+- Strip direction is forced LTR so image order is stable in Arabic.
+
+### Animation
+- GSAP ScrollTrigger scrubs both strips as the hero leaves the viewport (`start: top top` → `end: bottom top`). The section is not pinned.
+- Top row moves left; bottom row moves right.
+- Both edges stay cropped throughout the travel.
+- Animation is skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- No supporting paragraph in this pass.
+- Header/navigation is a separate layout component (`NavigationSiteHeader`).
+- “+50 client” wording is taken from the approved reference instruction.
+- Contact Us uses the same WhatsApp URL as the header CTA.
