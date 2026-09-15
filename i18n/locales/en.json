@@ -25,5 +25,18 @@
     "world": "World",
     "ourWorks": "Our Works",
     "contactUs": "Contact Us"
+  },
+  "services": {
+    "heading": "Services",
+    "items": {
+      "logo-design-visual-identity": "Logo Design & Visual Identity",
+      "graphic-design-packaging-design": "Graphic Design & Packaging Design",
+      "printing-packaging": "Printing & Packaging",
+      "ai-generated-videos": "AI generated videos",
+      "digital-marketing": "Digital Marketing",
+      "video-editing-production": "Video Editing & Production",
+      "web-design": "Web Design",
+      "exhibition-planning-preparation": "Exhibition Planning & Preparation"
+    }
   }
 }

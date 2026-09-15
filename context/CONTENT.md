@@ -46,7 +46,25 @@ Displayed as three centered lines, with circular placeholder images between word
 - Primary — EN: Our Works / AR: أعمالنا → Projects page
 - Secondary — EN: Contact Us / AR: تواصل معنا → WhatsApp
 
-### SEO
+## Home — Service bands
+
+Repeating ticker copy. Names come from PROJECT.md core services.
+
+- EN / AR:
+  - Logo Design & Visual Identity / تصميم الشعار والهوية البصرية
+  - Graphic Design & Packaging Design / التصميم الجرافيكي وتصميم التغليف
+  - Printing & Packaging / الطباعة والتغليف
+  - AI generated videos / فيديوهات مولّدة بالذكاء الاصطناعي
+  - Digital Marketing / التسويق الرقمي
+  - Video Editing & Production / مونتاج وإنتاج الفيديو
+  - Web Design / تصميم المواقع
+  - Exhibition Planning & Preparation / تخطيط وإعداد المعارض
+
+Separator: ●
+
+Do not add extra ticker phrases (experience counts, job titles, customer counts).
+
+## SEO
 - EN title: Mister Media — Creative & Marketing Agency
 - EN description: Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing.
 - AR title: مستر ميديا — وكالة إبداعية وتسويقية

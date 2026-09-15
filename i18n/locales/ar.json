@@ -25,5 +25,18 @@
     "world": "العالم",
     "ourWorks": "أعمالنا",
     "contactUs": "تواصل معنا"
+  },
+  "services": {
+    "heading": "الخدمات",
+    "items": {
+      "logo-design-visual-identity": "تصميم الشعار والهوية البصرية",
+      "graphic-design-packaging-design": "التصميم الجرافيكي وتصميم التغليف",
+      "printing-packaging": "الطباعة والتغليف",
+      "ai-generated-videos": "فيديوهات مولّدة بالذكاء الاصطناعي",
+      "digital-marketing": "التسويق الرقمي",
+      "video-editing-production": "مونتاج وإنتاج الفيديو",
+      "web-design": "تصميم المواقع",
+      "exhibition-planning-preparation": "تخطيط وإعداد المعارض"
+    }
   }
 }

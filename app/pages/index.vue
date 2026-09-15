@@ -12,7 +12,6 @@ useSeoMeta({
 <template>
   <main>
     <SectionsHeroSection />
-
-    <div class="h-screen bg-light-bg"></div>
+    <SectionsServiceBandsSection />
   </main>
 </template>

@@ -56,6 +56,7 @@ Initial structure:
     │   ├── sections/
     │   └── ui/
     ├── composables/
+    ├── data/
     ├── layouts/
     ├── pages/
     ├── plugins/
@@ -403,6 +404,12 @@ The exact content architecture will be defined after the project's content and a
 
 Do not introduce a CMS or external content system unless explicitly approved.
 
+### Current data
+
+- `app/data/services.ts` — service slugs (source of identity).
+- `app/composables/useServices.ts` — localized names and routes from i18n.
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`).
+
 ---
 
 ## 15. Section-by-Section Implementation
@@ -635,3 +642,43 @@ Single section component with a centered typographic headline and a full-bleed p
 - Header/navigation is a separate layout component (`NavigationSiteHeader`).
 - “+50 client” wording is taken from the approved reference instruction.
 - Contact Us uses the same WhatsApp URL as the header CTA.
+
+---
+
+## 25. Home — Service bands
+
+### Status
+Implemented (first pass).
+
+### Approach
+Two full-width diagonal ticker strips that cross in an X, directly below the hero. Copy is the core services list from `useServices()`, repeated and separated by ●. One strip is primary; the other is the dark text color. Names live in i18n; slugs live in `app/data/services.ts`. Labels are not links.
+
+### Components
+- `app/components/sections/ServiceBandsSection.vue`
+- `app/components/ui/Marquee.vue`
+- `app/composables/useServices.ts`
+- `app/data/services.ts`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- Section sits on the lightest background, with overflow clipped.
+- Dark strip rotates `10deg` (behind); primary strip rotates `-10deg` (in front).
+- Each strip is wider than the viewport so the rotated ends stay filled.
+- Track direction is forced LTR so the X composition stays stable in Arabic.
+
+### Typography
+- Title face, semibold, lightest (white) labels on both strips.
+
+### Responsive
+- Type: `text-lg` → `md:text-2xl`.
+- Band padding and crossing height scale up through `lg`.
+
+### Animation
+- `UiMarquee` (rAF, segment recycle) — not CSS animation. Native `ResizeObserver` instead of VueUse.
+- Duration is 40s per segment so the loop stays slow and seamless.
+- Primary strip travels left; dark strip travels right (`reverse`).
+- Animation is skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- Extra reference phrases (years of experience, customer counts, job titles) are not used.
+- Service detail pages remain empty shells until that section is implemented.
