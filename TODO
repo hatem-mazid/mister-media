@@ -1,6 +1,6 @@
 ask client:
-  - ask about old offices images
-  - syrian accent
+  - ask about old offices images (about page has a studio image slot)
+  - confirm countries served (about page coverage map uses placeholder markets)
 
 
 TOOD:
@@ -9,8 +9,8 @@ TOOD:
   - waiting for services idea
   - add icons in hero section
   - add testimonials section
-  - add about and coverage section
-  - add contact us section
+  - add about and coverage section (done as /about page; coverage section is standalone and can be dropped into home)
+  - add contact us section (done)
   - add footer
   - add page transitions
   -

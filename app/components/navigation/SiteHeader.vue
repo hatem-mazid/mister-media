@@ -18,6 +18,7 @@ const navItems = [
   { key: 'home', to: '/' },
   { key: 'projects', to: '/projects' },
   { key: 'services', to: '/services' },
+  { key: 'about', to: '/about' },
 ] as const
 
 const otherLocales = computed(() =>

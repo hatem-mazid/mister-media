@@ -21,8 +21,8 @@ Do not invent client statistics, testimonials, or claims beyond PROJECT.md and a
 Primary contact action is WhatsApp (PROJECT.md). The WhatsApp number has not been supplied yet.
 
 ### Menu
-- EN: Home, Projects, Services
-- AR: الرئيسية، المشاريع، الخدمات
+- EN: Home, Projects, Services, About
+- AR: الرئيسية، المشاريع، الخدمات، من نحن
 
 ## Home — Hero
 
@@ -129,8 +129,117 @@ Same name/position across cards. Company is omitted on the fourth card.
 - Position / المنصب
 - Company / الشركة (items 1–3)
 
+## Home — Contact
+
+Full-bleed primary band after testimonials. No form. The only action is WhatsApp.
+
+### Headline
+- EN: Have an idea? + handwritten whatsapp
+- AR: لديك فكرة؟ + handwritten واتساب
+
+### CTA
+Centered default-size Let's Talk pill → WhatsApp
+
+The apostrophe in Let's Talk is primary, matching the header.
+
+### Ticker
+- EN: Let's Talk · WhatsApp · Turkey · Idea to Execution
+- AR: لنتحدث · واتساب · تركيا · من الفكرة إلى التنفيذ
+
+## Home — About teaser
+
+Brief band between Testimonials and Contact, linking to the About page. Reuses the About intro paragraph.
+
+### Heading
+- EN: About Us + handwritten who we are
+- AR: من نحن + handwritten تعرّف علينا
+
+### Fact chips
+- 10+ years of experience / خبرة تزيد عن 10 سنوات
+- +50 clients / أكثر من 50 عميلًا
+- Based in Turkey / مقرنا في تركيا
+
+### CTA
+- EN: More About Us / AR: المزيد عنا → About page (also on the image tile)
+
+## About — Hero
+
+Statement headline built from the agency's own positioning line in PROJECT.md ("Artists in Graphic Design, Experts in Printing Solution, and Specialized in E-Marketing"). Facts use approved figures only.
+
+### Eyebrow
+- EN: About Mister Media
+- AR: عن مستر ميديا
+
+### Headline
+Three lines; connector words in light text, emphasis in handwritten / primary / dark.
+
+1. Artists in + handwritten Graphic Design / فنانون في + التصميم الجرافيكي
+2. Experts in + primary Printing Solutions / خبراء في + حلول الطباعة
+3. Specialized in + E-Marketing / متخصصون في + التسويق الإلكتروني
+
+### Intro
+- EN: Mister Media is an established creative and marketing agency based in Turkey. For more than 10 years we have taken brands from idea to execution — from branding and design to printing, packaging, marketing, and delivery.
+- AR: مستر ميديا وكالة إبداعية وتسويقية راسخة مقرها تركيا. منذ أكثر من 10 سنوات نأخذ العلامات التجارية من الفكرة إلى التنفيذ — من الهوية البصرية والتصميم إلى الطباعة والتغليف والتسويق والتسليم.
+
+CTAs reuse the hero buttons: Our Works → Projects, Contact Us → WhatsApp.
+
+### Studio image
+Wide placeholder image below the headline, reserved for office / studio photography (see TODO: ask about old office images).
+
+### Facts
+- 10+ / +10 + handwritten years / سنوات — of experience turning ideas into brand experiences
+- +50 + handwritten clients / عميلًا — trust Mister Media with their brand
+- 8 + handwritten services / خدمات — from visual identity to exhibitions, under one roof
+
+"8" is the count of core services in PROJECT.md.
+
+## About — Process
+
+Draft copy derived from PROJECT.md content sources (strong idea needs strong execution; consistency across touchpoints; professional printing delivers the design correctly; creation through production and delivery). Needs client approval as final copy.
+
+### Heading
+- EN: Process + handwritten how we work
+- AR: طريقة عملنا + handwritten خطوة بخطوة
+
+### Intro
+- EN: A strong idea needs strong execution to reach people. We stay with your brand through every step.
+- AR: الفكرة القوية تحتاج إلى تنفيذ قوي لتصل إلى الناس. نبقى مع علامتك التجارية في كل خطوة.
+
+### Steps
+1. Idea / الفكرة — We start with your idea and the story your brand needs to tell.
+2. Design / التصميم — Logo, visual identity, graphic and packaging design that stay consistent across every touchpoint.
+3. Production / الإنتاج — Professional printing and packaging, so the design reaches your customer exactly as intended.
+4. Launch / الإطلاق — Digital marketing, video, web, and exhibitions that put the finished work in front of your audience.
+
+## About — Coverage
+
+Dotted world map with Turkey as headquarters and highlighted markets. Turkey HQ is a fact (PROJECT.md §6). The market list is a placeholder until the client confirms the countries served; do not present it as a claim.
+
+### Heading
+- EN: Coverage + handwritten worldwide
+- AR: التغطية + handwritten حول العالم
+
+### Intro
+- EN: Headquartered in Turkey, Mister Media works with brands across the region and around the world.
+- AR: من مقرها في تركيا، تعمل مستر ميديا مع علامات تجارية في المنطقة وحول العالم.
+
+### Labels
+- Where we work / أين نعمل
+- HQ / المقر
+
+### Placeholder markets
+Saudi Arabia, United Arab Emirates, Qatar, Kuwait, Iraq, Syria, Jordan, Egypt, Libya, Germany, United Kingdom, United States, Malaysia. Edit `app/data/coverage.ts` and `coverage.countries.*` once confirmed.
+
+The panel ends with the WhatsApp Let's Talk CTA.
+
 ## SEO
 - EN title: Mister Media — Creative & Marketing Agency
 - EN description: Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing.
 - AR title: مستر ميديا — وكالة إبداعية وتسويقية
 - AR description: مستر ميديا وكالة إبداعية وتسويقية مقرها تركيا، تخدم علامات تجارية حول العالم، بخبرة تزيد عن 10 سنوات في الهوية البصرية، التصميم الجرافيكي، الطباعة، التغليف، والتسويق الرقمي.
+
+### About
+- EN title: About Mister Media — Creative & Marketing Agency in Turkey
+- EN description: Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world.
+- AR title: عن مستر ميديا — وكالة إبداعية وتسويقية في تركيا
+- AR description: مستر ميديا وكالة إبداعية وتسويقية راسخة مقرها تركيا، بخبرة تزيد عن 10 سنوات، تأخذ العلامات التجارية من الفكرة إلى التنفيذ في الهوية البصرية والتصميم الجرافيكي والطباعة والتغليف والفيديو والمواقع والتسويق الرقمي لعملاء حول العالم.

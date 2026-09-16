@@ -4,12 +4,18 @@ import gsap from 'gsap'
 const props = withDefaults(defineProps<{
   to: string
   variant?: 'primary' | 'secondary' | 'text' | 'light'
+  size?: 'md' | 'lg'
+  wide?: boolean
+  outline?: 'primary' | 'main'
   external?: boolean
   magnetic?: boolean
   magnetPad?: number
   magnetStrength?: number
 }>(), {
   variant: 'primary',
+  size: 'md',
+  wide: false,
+  outline: 'primary',
   external: false,
   magnetic: true,
   magnetPad: 25,
@@ -20,12 +26,34 @@ const homeRef = useTemplateRef<HTMLElement>('homeRef')
 const magnetRef = useTemplateRef<HTMLElement>('magnetRef')
 const iconRef = useTemplateRef<HTMLElement>('iconRef')
 
-const variantClass = {
-  primary: 'inline-flex items-center gap-3 rounded-full bg-main py-1.5 ps-6 pe-1.5 font-title text-base font-semibold text-lightest-bg transition-colors hover:bg-main/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-  secondary: 'inline-flex items-center rounded-full px-6 py-3.5 font-title text-base font-semibold text-main ring-1 ring-main/15 transition-colors hover:bg-main/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-  text: 'inline-flex items-center font-title text-base font-semibold text-main md:text-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-  light: 'inline-flex items-center gap-3 rounded-full bg-lightest-bg py-1.5 ps-6 pe-1.5 font-title text-base font-semibold text-main transition-colors hover:bg-lightest-bg/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-}
+const variantClass = computed(() => {
+  const display = props.wide ? 'flex w-full justify-between' : 'inline-flex'
+  const focus = props.outline === 'main'
+    ? 'focus-visible:outline-main'
+    : 'focus-visible:outline-primary'
+  const pillSize = props.size === 'lg'
+    ? 'gap-5 py-3.5 ps-8 pe-3.5 text-2xl md:gap-8 md:py-5 md:ps-14 md:pe-5 md:text-5xl'
+    : 'gap-3 py-1.5 ps-6 pe-1.5 text-base'
+
+  return {
+    primary: `${display} items-center ${pillSize} rounded-full bg-main font-title font-semibold text-lightest-bg transition-colors hover:bg-main/90 focus-visible:outline-2 focus-visible:outline-offset-4 ${focus}`,
+    secondary: `${display} items-center rounded-full px-6 py-3.5 font-title text-base font-semibold text-main ring-1 ring-main/15 transition-colors hover:bg-main/5 focus-visible:outline-2 focus-visible:outline-offset-4 ${focus}`,
+    text: `${display} items-center font-title text-base font-semibold text-main md:text-xl focus-visible:outline-2 focus-visible:outline-offset-4 ${focus}`,
+    light: `${display} items-center ${pillSize} rounded-full bg-lightest-bg font-title font-semibold text-main transition-colors hover:bg-lightest-bg/90 focus-visible:outline-2 focus-visible:outline-offset-4 ${focus}`,
+  }
+})
+
+const iconWrapClass = computed(() =>
+  props.size === 'lg'
+    ? 'size-16 md:size-24'
+    : 'size-10',
+)
+
+const iconClass = computed(() =>
+  props.size === 'lg'
+    ? 'size-7 md:size-10'
+    : 'size-5',
+)
 
 let pulling = false
 
@@ -73,12 +101,14 @@ function onMove(event: MouseEvent | PointerEvent) {
 function enter() {
   if (!shouldAnimate() || !magnetRef.value) return
 
-  gsap.to(magnetRef.value, {
-    scale: 1.06,
-    duration: 0.45,
-    ease: 'back.out(2.4)',
-    overwrite: false,
-  })
+  if (!props.wide) {
+    gsap.to(magnetRef.value, {
+      scale: 1.06,
+      duration: 0.45,
+      ease: 'back.out(2.4)',
+      overwrite: false,
+    })
+  }
 
   if (iconRef.value) {
     gsap.to(iconRef.value, {
@@ -125,10 +155,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <span ref="homeRef" class="inline-flex">
+  <span
+    ref="homeRef"
+    :class="wide ? 'flex w-full' : 'inline-flex'"
+  >
     <span
       ref="magnetRef"
-      class="inline-flex origin-center will-change-transform"
+      :class="[
+        'origin-center will-change-transform',
+        wide ? 'flex w-full' : 'inline-flex',
+      ]"
       @pointerenter="enter"
       @pointerleave="leave"
     >
@@ -138,14 +174,22 @@ onBeforeUnmount(() => {
         :rel="external ? 'noopener noreferrer' : undefined"
         :class="variantClass[variant]"
       >
-        <slot />
+        <span class="min-w-0">
+          <slot />
+        </span>
         <span
           v-if="variant === 'primary' || variant === 'light'"
           ref="iconRef"
-          class="flex size-10 origin-center items-center justify-center rounded-full bg-primary text-main"
+          :class="[
+            'flex origin-center items-center justify-center rounded-full bg-primary text-main',
+            iconWrapClass,
+          ]"
           aria-hidden="true"
         >
-          <Icon name="lucide:arrow-up-right" class="size-5" />
+          <Icon
+            name="lucide:arrow-up-right"
+            :class="iconClass"
+          />
         </span>
       </NuxtLink>
     </span>

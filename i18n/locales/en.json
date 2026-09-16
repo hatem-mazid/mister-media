@@ -1,7 +1,9 @@
 {
   "seo": {
     "homeTitle": "Mister Media — Creative & Marketing Agency",
-    "homeDescription": "Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing."
+    "homeDescription": "Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing.",
+    "aboutTitle": "About Mister Media — Creative & Marketing Agency in Turkey",
+    "aboutDescription": "Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world."
   },
   "nav": {
     "logoAlt": "Mister Media",
@@ -12,7 +14,95 @@
     "links": {
       "home": "Home",
       "projects": "Projects",
-      "services": "Services"
+      "services": "Services",
+      "about": "About"
+    }
+  },
+  "about": {
+    "eyebrow": "About Mister Media",
+    "headline": {
+      "artists": "Artists in",
+      "graphic": "Graphic Design",
+      "experts": "Experts in",
+      "printing": "Printing Solutions",
+      "specialized": "Specialized in",
+      "marketing": "E-Marketing"
+    },
+    "intro": "Mister Media is an established creative and marketing agency based in Turkey. For more than 10 years we have taken brands from idea to execution — from branding and design to printing, packaging, marketing, and delivery.",
+    "studioAlt": "Mister Media studio",
+    "facts": {
+      "years": {
+        "value": "10+",
+        "accent": "years",
+        "label": "of experience turning ideas into brand experiences"
+      },
+      "clients": {
+        "value": "+50",
+        "accent": "clients",
+        "label": "trust Mister Media with their brand"
+      },
+      "services": {
+        "value": "8",
+        "accent": "services",
+        "label": "from visual identity to exhibitions, under one roof"
+      }
+    },
+    "process": {
+      "heading": "Process",
+      "headingAccent": "how we work",
+      "intro": "A strong idea needs strong execution to reach people. We stay with your brand through every step.",
+      "steps": {
+        "idea": {
+          "title": "Idea",
+          "text": "We start with your idea and the story your brand needs to tell."
+        },
+        "design": {
+          "title": "Design",
+          "text": "Logo, visual identity, graphic and packaging design that stay consistent across every touchpoint."
+        },
+        "production": {
+          "title": "Production",
+          "text": "Professional printing and packaging, so the design reaches your customer exactly as intended."
+        },
+        "launch": {
+          "title": "Launch",
+          "text": "Digital marketing, video, web, and exhibitions that put the finished work in front of your audience."
+        }
+      }
+    }
+  },
+  "aboutTeaser": {
+    "heading": "About Us",
+    "headingAccent": "who we are",
+    "cta": "More About Us",
+    "facts": {
+      "years": "10+ years of experience",
+      "clients": "+50 clients",
+      "hq": "Based in Turkey"
+    }
+  },
+  "coverage": {
+    "heading": "Coverage",
+    "headingAccent": "worldwide",
+    "intro": "Headquartered in Turkey, Mister Media works with brands across the region and around the world.",
+    "mapLabel": "World map highlighting Mister Media's headquarters in Turkey and the markets it serves",
+    "marketsLabel": "Where we work",
+    "hq": "HQ",
+    "countries": {
+      "TUR": "Turkey",
+      "SAU": "Saudi Arabia",
+      "ARE": "United Arab Emirates",
+      "QAT": "Qatar",
+      "KWT": "Kuwait",
+      "IRQ": "Iraq",
+      "SYR": "Syria",
+      "JOR": "Jordan",
+      "EGY": "Egypt",
+      "LBY": "Libya",
+      "DEU": "Germany",
+      "GBR": "United Kingdom",
+      "USA": "United States",
+      "MYS": "Malaysia"
     }
   },
   "hero": {
@@ -77,6 +167,16 @@
         "name": "Client name",
         "position": "Position"
       }
+    }
+  },
+  "contact": {
+    "headingAccent": "whatsapp",
+    "headline": "Have an idea?",
+    "ticker": {
+      "talk": "Let's Talk",
+      "whatsapp": "WhatsApp",
+      "hq": "Turkey",
+      "promise": "Idea to Execution"
     }
   },
   "projects": {

@@ -18,5 +18,7 @@ useSeoMeta({
 
     <div class="h-screen bg-light-bg"></div>
     <SectionsTestimonialsSection />
+    <SectionsAboutTeaserSection />
+    <SectionsContactSection />
   </main>
 </template>

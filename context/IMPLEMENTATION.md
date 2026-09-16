@@ -87,6 +87,7 @@ Initial routes:
     /projects/[slug]
     /services
     /services/[slug]
+    /about
 
 Additional pages may be introduced later.
 
@@ -413,7 +414,10 @@ Do not introduce a CMS or external content system unless explicitly approved.
 - `app/data/clients.ts` — placeholder logo sources and intrinsic sizes from `app/assets/images/client-logos/`.
 - `app/data/testimonials.ts` — placeholder photo sources and intrinsic sizes.
 - `app/composables/useTestimonials.ts` — localized quotes, names, roles from i18n.
-- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`, `projects.items.*`, `clients.*`, `testimonials.*`).
+- `app/data/coverage.ts` — HQ code and placeholder market ISO3 codes.
+- `app/data/worldMap.ts` — generated dotted world map (per-country SVG dot paths and centroids). Regenerate with `node scripts/generate-world-map.mjs`.
+- `app/composables/useCoverage.ts` — localized HQ and market records with map points and dot paths.
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`, `projects.items.*`, `clients.*`, `testimonials.*`, `about.*`, `coverage.*`).
 
 ---
 
@@ -827,3 +831,171 @@ Quote slider below the services placeholder on the home page. Card follows `REFE
 - Company is optional; the fourth placeholder omits it.
 - Star rating from the card reference is intentionally omitted.
 - Replacing items in `app/data/testimonials.ts` and locale strings should not require changing the card layout.
+
+## Home — Contact
+
+### Status
+Implemented (first pass). No form. Primary conversion is WhatsApp (`PROJECT.md`).
+
+### Approach
+Full-bleed primary (`#F18F00`) closer after testimonials. Centered headline, default-size WhatsApp pill, and a bottom ticker. Copy lives in Nuxt i18n locale files.
+
+### Components
+- `app/components/sections/ContactSection.vue`
+- `app/components/ui/Button.vue` (`outline="main"` on the primary field)
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- XL fluid container (`max-w-360`), content centered.
+- Decorative circles sit in the primary field.
+- Default-size Let's Talk pill centered under the headline.
+- Ticker is full-bleed under a light divider.
+
+### Typography
+- Title face for the headline, CTA, and ticker.
+- Handwritten + dark (`#36393B`) overlapping the end of the white headline (whatsapp / واتساب).
+- Let's Talk apostrophe uses primary, matching the header.
+
+### Responsive
+- Headline, CTA, and ticker stay centered at every breakpoint.
+
+### Animation
+- GSAP ScrollTrigger stagger (`y` + `autoAlpha`) when the section enters view.
+- Button icon rotates/scales on hover.
+- Ticker uses `UiMarquee`.
+- Animation is skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- WhatsApp URL is still the `runtimeConfig.public.whatsappUrl` placeholder until the client number is supplied.
+- No email, phone, or address is shown until those details are provided.
+
+---
+
+## Home — About teaser
+
+### Status
+Implemented (first pass).
+
+### Approach
+Light-background band after Testimonials that previews the About page. Heading lockup, the shared `about.intro` paragraph, three fact chips (approved figures), a primary **More About Us** button, and a studio image tile that is itself a link to `/about`.
+
+### Components
+- `app/components/sections/AboutTeaserSection.vue`
+- `app/components/ui/SectionHeading.vue`, `app/components/ui/Button.vue`
+- Locales: `aboutTeaser.*` (reuses `about.intro`, `about.studioAlt`)
+
+### Layout
+- XL fluid container, `bg-light-bg`, 12-column grid from `lg`: copy (7 columns) then image tile (5 columns), vertically centred. Stacks on smaller screens with the image last.
+- Image tile aspect `16/9` → `lg:4/3`, `rounded-3xl` → `md:rounded-[2.5rem]`, primary arrow badge in the trailing bottom corner.
+- Chips are white capsules with a primary lucide icon.
+
+### Animation
+- GSAP ScrollTrigger stagger (`y` + `autoAlpha`) when the section enters view.
+- Image scales and the arrow badge tilts on hover (CSS).
+- Skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- Section id is `about`, so `/#about` anchors here; the full page remains `/about`.
+- Studio image is the same picsum placeholder as the About hero.
+
+---
+
+## About — Hero
+
+### Status
+Implemented (first pass). No visual reference; composition derived from the home hero and DESIGN.md.
+
+### Approach
+Statement page opener: eyebrow, three-line positioning headline, intro paragraph with the two hero CTAs, a wide studio image slot, then three fact tiles. Copy lives in Nuxt i18n. The image is a picsum placeholder reserved for office / studio photography.
+
+### Components
+- `app/pages/about.vue`
+- `app/components/sections/AboutHeroSection.vue`
+- `app/components/ui/Button.vue`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`about.*`, `seo.aboutTitle`, `seo.aboutDescription`)
+- Nav: `about` added to `NavigationSiteHeader` items.
+
+### Layout
+- XL fluid container (`max-w-360`), top padding clears the fixed header (`pt-32` / `md:pt-40`).
+- 12-column grid from `lg`: headline (8 columns), intro + CTAs (4 columns, bottom-aligned).
+- Studio image: `rounded-3xl` → `md:rounded-[2.5rem]`, aspect `4/3` → `sm:16/9` → `lg:21/9`.
+- Facts: 3 light-bg tiles (`sm:grid-cols-3`) with the same number + handwritten lockup as the testimonials aside.
+
+### Typography
+- Headline mirrors the home hero: title face, `clamp(2.25rem, 5.8vw, 5.5rem)`, connectors in light text, emphasis in handwritten primary / title primary / title dark.
+- Arabic headline uses `rtl:leading-[1.2]` and normal tracking. Connector spans paint a same-color background because Chrome culls Almarai ink that rises above the line box when a connector word wraps onto its own row.
+
+### Animation
+- GSAP load-in stagger (`y` + `autoAlpha`) on eyebrow, headline lines, intro, image, and facts.
+- Studio image parallax: `yPercent` -8 → 8 scrubbed while the media block crosses the viewport; image is pre-scaled (`scale-[1.18]`) so edges stay covered.
+- Skipped when `prefers-reduced-motion: reduce` is set.
+
+### Assumptions
+- Headline uses the agency's own positioning line from PROJECT.md; "Printing Solutions" is pluralised.
+- "8 services" is the count of core services in PROJECT.md.
+
+---
+
+## About — Process
+
+### Status
+Implemented (first pass). Copy is draft, derived from PROJECT.md content sources, pending client approval.
+
+### Approach
+Four-step "idea to execution" strip below the About hero: numbered cards with a primary icon circle, a stroke-only step number, a title, and one line of copy. Step keys and icons live in the component; copy lives in i18n.
+
+### Components
+- `app/components/sections/AboutProcessSection.vue`
+- `app/components/ui/SectionHeading.vue`
+- Locales: `about.process.*`
+
+### Layout
+- Heading **Process** + handwritten **how we work**, intro paragraph on the trailing side.
+- `<ol>` of cards: 1 column → `md:grid-cols-2` → `xl:grid-cols-4`.
+- Cards are white with a hairline ring (`ring-main/10`), `rounded-3xl`; hover fills with the light background.
+
+### Typography
+- Step number: title face, light weight, stroke-only (`-webkit-text-stroke` in light text), tabular.
+- Step title: title face semibold; copy in paragraph face.
+
+### Animation
+- GSAP ScrollTrigger stagger (`y` + `autoAlpha`) when the section enters view.
+- Icon circle scales and tilts on card hover (CSS transition).
+- Skipped when `prefers-reduced-motion: reduce` is set.
+
+---
+
+## About — World coverage
+
+### Status
+Implemented (first pass). No visual reference; concept is a dotted world map anchored on Turkey.
+
+### Approach
+Dark rounded panel with a dot-matrix world map (Robinson projection) rendered as SVG paths — no map library. `scripts/generate-world-map.mjs` samples an even grid over public-domain country outlines (Natural Earth 110m via johan/world.geo.json), tags each dot with its ISO3 code, and writes `app/data/worldMap.ts` (one `M x y h0` sub-path per dot, drawn with a round line cap; centroids per country, with an outline-centre fallback for countries too small to receive a dot). Base land is muted; market countries are primary; Turkey is white with a pulsing primary HQ marker. Quadratic arcs connect HQ to each market centroid. Below the map, a list of market pills; hovering or focusing a pill (or a marker) highlights that country's dots, arc, and marker, and dims the others; click/tap pins it (`aria-pressed`).
+
+### Components
+- `app/components/sections/WorldCoverageSection.vue`
+- `app/composables/useCoverage.ts`
+- `app/data/coverage.ts`, `app/data/worldMap.ts` (generated)
+- `scripts/generate-world-map.mjs` — run `node scripts/generate-world-map.mjs` to change dot density (`STEP`) or the data source.
+- Locales: `coverage.*`
+
+### Layout
+- XL fluid container. Heading **Coverage** + handwritten **worldwide**, intro paragraph on the trailing side.
+- Panel: `bg-main`, `rounded-3xl` → `md:rounded-[2.5rem]`, overflow clipped.
+- Map area is forced LTR. Aspect `4/5` → `sm:3/2` → `lg:896/422` (native map ratio). Below `lg` the SVG is sized to the panel height and shifted with a `--hq-x` CSS variable so Turkey stays horizontally centred while the Americas / Pacific crop away; arcs run off-panel.
+- Footer row inside the panel: "Where we work" label, HQ chip (white, map-pin icon, "Turkey HQ") + market pills, and a `light` Let's Talk button on the trailing side.
+
+### Typography
+- Section heading via `UiSectionHeading`. Label in title face, uppercase tracking. Pills in paragraph face.
+
+### Animation
+- GSAP timeline on enter (`start: top 75%`, once): heading/panel stagger → SVG mask circle expands from the HQ point to reveal the dots (1.2s, `power2.inOut`) → HQ marker pops (`back.out`) → arcs draw via `stroke-dashoffset` (staggered) → market markers pop in.
+- HQ ring pulses with `animate-ping` (SVG `transform-box: fill-box`).
+- Hover/pin transitions are CSS opacity/color.
+- Skipped when `prefers-reduced-motion: reduce` is set (map renders fully, no pulse).
+
+### Assumptions
+- Market list is a placeholder (PROJECT.md §6 says countries will be supplied later). Replace codes in `app/data/coverage.ts` and names in `coverage.countries.*`; the map and layout need no changes.
+- Dataset labels disputed territories as `-99`; they are drawn as base land only.
+- Antarctica is omitted from the generated map.
