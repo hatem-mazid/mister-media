@@ -411,7 +411,9 @@ Do not introduce a CMS or external content system unless explicitly approved.
 - `app/data/projects.ts` — project slugs, service links, cover media, masonry spans.
 - `app/composables/useProjects.ts` — localized names, service labels, and routes from i18n.
 - `app/data/clients.ts` — placeholder logo sources and intrinsic sizes from `app/assets/images/client-logos/`.
-- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`, `projects.items.*`, `clients.*`).
+- `app/data/testimonials.ts` — placeholder photo sources and intrinsic sizes.
+- `app/composables/useTestimonials.ts` — localized quotes, names, roles from i18n.
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json` (`services.items.*`, `projects.items.*`, `clients.*`, `testimonials.*`).
 
 ---
 
@@ -777,3 +779,51 @@ Two full-bleed logo rows below featured projects. Continuous `UiMarquee` tickers
 - Logo files are Logoipsum placeholders, not real clients.
 - No client names, links, or alt text until real marks and names are supplied.
 - Replacing a file in `app/data/clients.ts` should not require changing the section layout.
+
+---
+
+## 28. Home — Testimonials
+
+### Status
+Implemented (first pass).
+
+### Approach
+Quote slider below the services placeholder on the home page. Card follows `REFERENCES.md` testimonial card, without the star rating. Index stays top-right; quote in the middle; circular photo, name, and position/company at the bottom. Copy lives in i18n; identity and photos live in `app/data/testimonials.ts`. Quotes are clearly marked placeholders until the client supplies testimonials.
+
+### Components
+- `app/components/sections/TestimonialsSection.vue`
+- `app/components/ui/TestimonialCard.vue`
+- `app/composables/useTestimonials.ts`
+- `app/data/testimonials.ts`
+- Locales: `i18n/locales/en.json`, `i18n/locales/ar.json`
+
+### Layout
+- XL fluid container (`max-w-360`).
+- Heading **Testimonials** with handwritten **voices**, circular prev/next on the trailing side.
+- 12-column grid from `lg`: dark trust panel first (4 columns), then the quote Swiper (8 columns).
+- Trust panel uses approved figures only (**+50** clients from the hero, **10+ years** from PROJECT.md) and the WhatsApp **Let's Talk** CTA (`light` button on dark fill).
+- One card at a time. Peeking next card from the reference is not used.
+- Cards use the light background (`#FFEECF`), large radius (`rounded-3xl`).
+- Large handwritten quotation marks in primary color sit at the start and end of the quote.
+
+### Typography
+- Title face for the section heading, index, and name.
+- Paragraph face for the quote and role line.
+- Handwritten + primary color overlapping the end of the title (voices / قالوا).
+
+### Responsive
+- Heading stacks above nav buttons on small screens; they sit on one row from `sm`.
+- Trust panel stacks above the Swiper on small screens; they sit in one row from `lg`.
+- Quote type: `text-base` → `md:text-lg`.
+- Card padding: `p-5` → `md:p-6` → `lg:p-8`.
+
+### Animation
+- GSAP ScrollTrigger stagger (`y` + `autoAlpha`) when the section enters view.
+- Swiper slide transition at 400ms; looped when more than one quote is present.
+- Animation is skipped when `prefers-reduced-motion: reduce` is set (GSAP off, Swiper speed 0).
+
+### Assumptions
+- Quotes, names, roles, and photos are placeholders.
+- Company is optional; the fourth placeholder omits it.
+- Star rating from the card reference is intentionally omitted.
+- Replacing items in `app/data/testimonials.ts` and locale strings should not require changing the card layout.

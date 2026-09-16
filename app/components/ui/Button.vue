@@ -3,7 +3,7 @@ import gsap from 'gsap'
 
 const props = withDefaults(defineProps<{
   to: string
-  variant?: 'primary' | 'secondary' | 'text'
+  variant?: 'primary' | 'secondary' | 'text' | 'light'
   external?: boolean
   magnetic?: boolean
   magnetPad?: number
@@ -24,6 +24,7 @@ const variantClass = {
   primary: 'inline-flex items-center gap-3 rounded-full bg-main py-1.5 ps-6 pe-1.5 font-title text-base font-semibold text-lightest-bg transition-colors hover:bg-main/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
   secondary: 'inline-flex items-center rounded-full px-6 py-3.5 font-title text-base font-semibold text-main ring-1 ring-main/15 transition-colors hover:bg-main/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
   text: 'inline-flex items-center font-title text-base font-semibold text-main md:text-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
+  light: 'inline-flex items-center gap-3 rounded-full bg-lightest-bg py-1.5 ps-6 pe-1.5 font-title text-base font-semibold text-main transition-colors hover:bg-lightest-bg/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
 }
 
 let pulling = false
@@ -139,7 +140,7 @@ onBeforeUnmount(() => {
       >
         <slot />
         <span
-          v-if="variant === 'primary'"
+          v-if="variant === 'primary' || variant === 'light'"
           ref="iconRef"
           class="flex size-10 origin-center items-center justify-center rounded-full bg-primary text-main"
           aria-hidden="true"

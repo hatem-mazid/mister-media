@@ -99,6 +99,36 @@ Two full-width rows of logos below featured work. Logos are placeholders until r
 - EN: Our Clients + handwritten trusted
 - AR: عملاؤنا + handwritten موثوقون
 
+## Home — Testimonials
+
+Slider of quote cards below the services placeholder. Copy is placeholder until real testimonials are supplied. Do not invent client praise.
+
+Star rating from the card reference is omitted.
+
+### Heading
+- EN: Testimonials + handwritten voices
+- AR: آراء العملاء + handwritten قالوا
+
+### Card
+- Index: `n/total` (top right)
+- Quote
+- Circular photo, name, then position and company when available
+
+### Aside
+Sits before the quote slider (leading column on large screens). Uses approved figures only.
+
+- EN: +50 + handwritten clients / More than 10 years of experience / Let's Talk
+- AR: +50 + handwritten عملاء / خبرة تزيد عن 10 سنوات / لنتحدث
+
+Let's Talk is the WhatsApp CTA.
+
+### Placeholder items
+Same name/position across cards. Company is omitted on the fourth card.
+
+- Client name / اسم العميل
+- Position / المنصب
+- Company / الشركة (items 1–3)
+
 ## SEO
 - EN title: Mister Media — Creative & Marketing Agency
 - EN description: Mister Media is a creative and marketing agency based in Turkey, serving brands worldwide, with more than 10 years of experience in branding, graphic design, printing, packaging, and digital marketing.

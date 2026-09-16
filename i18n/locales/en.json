@@ -43,6 +43,42 @@
     "heading": "Our Clients",
     "headingAccent": "trusted"
   },
+  "testimonials": {
+    "heading": "Testimonials",
+    "headingAccent": "voices",
+    "prev": "Previous testimonial",
+    "next": "Next testimonial",
+    "aside": {
+      "count": "+50",
+      "countAccent": "clients",
+      "experience": "More than 10 years of experience"
+    },
+    "items": {
+      "placeholder-1": {
+        "quote": "Placeholder quote. Real client feedback will replace this once testimonials are supplied.",
+        "name": "Client name",
+        "position": "Position",
+        "company": "Company"
+      },
+      "placeholder-2": {
+        "quote": "This is a placeholder testimonial. The name, role, and photo are temporary until the client provides final material.",
+        "name": "Client name",
+        "position": "Position",
+        "company": "Company"
+      },
+      "placeholder-3": {
+        "quote": "Placeholder client comment for layout. Quotes, names, companies, and portraits will be replaced when testimonials are collected.",
+        "name": "Client name",
+        "position": "Position",
+        "company": "Company"
+      },
+      "placeholder-4": {
+        "quote": "Placeholder feedback. This card has no company line, to show that field is optional.",
+        "name": "Client name",
+        "position": "Position"
+      }
+    }
+  },
   "projects": {
     "heading": "Our Works",
     "headingAccent": "featured",
