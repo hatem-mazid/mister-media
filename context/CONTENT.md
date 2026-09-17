@@ -127,6 +127,55 @@ Full portfolio page at `/projects`. It presents the same approved placeholder pr
 
 The page closes with the shared WhatsApp contact band.
 
+## Services — Index
+
+Full services page at `/services`. Names are the eight core services from PROJECT.md. Short summaries are draft copy derived from PROJECT.md (touchpoints, printing execution, idea to execution, putting work in front of the audience). Needs client approval as final copy.
+
+### Headline
+- EN: Services + handwritten under one roof
+- AR: الخدمات + handwritten تحت سقف واحد
+
+"Under one roof" reuses the About fact line for the eight services.
+
+### Intro
+- EN: Mister Media takes brands from idea to execution across eight core services — from visual identity and packaging to printing, film, web, and exhibitions. Printing and packaging sit at the centre of that work.
+- AR: تأخذ مستر ميديا العلامات التجارية من الفكرة إلى التنفيذ عبر ثماني خدمات أساسية — من الهوية البصرية والتغليف إلى الطباعة والفيديو والمواقع والمعارض. الطباعة والتغليف في قلب هذا العمل.
+
+Printing is called out because PROJECT.md asks to highlight printing and packaging.
+
+### Counts
+- services / خدمات — total number of core services (from data)
+- 10+ years / +10 سنوات — approved experience figure
+
+### Showcase
+Each service has a number, icon, name, summary, Explore → `/services/[slug]`, and View work → `/projects?service=` when that service has projects. Covers in the 3D stack are real project images for that service; services without projects show the category icon instead.
+
+### Summaries
+1. Logo Design & Visual Identity / تصميم الشعار والهوية البصرية — Logo and visual identity that stay consistent across every touchpoint.
+2. Graphic Design & Packaging Design / التصميم الجرافيكي وتصميم التغليف — Graphic and packaging design that stay consistent from the page to the pack in the hand.
+3. Printing & Packaging / الطباعة والتغليف — Professional printing and packaging, so the design reaches your customer exactly as intended.
+4. AI generated videos / فيديوهات مولّدة بالذكاء الاصطناعي — AI-generated videos as part of taking a brand from idea to execution.
+5. Digital Marketing / التسويق الرقمي — Digital marketing that puts the finished work in front of your audience.
+6. Video Editing & Production / مونتاج وإنتاج الفيديو — Video editing and production for brand films and campaigns.
+7. Web Design / تصميم المواقع — Web design that carries the brand from idea to execution on screen.
+8. Exhibition Planning & Preparation / تخطيط وإعداد المعارض — Exhibition planning and preparation that put the finished work in front of your audience.
+
+The page closes with the shared WhatsApp contact band.
+
+## Services — Detail
+
+Dedicated page at `/services/[slug]` for each core service. Same name and summary as the index. Related projects are the existing portfolio records tagged with that service — no new project names. If none are tagged yet, show an empty state rather than invented work.
+
+### Actions
+- View work / عرض الأعمال → Projects page filtered to this service (only when work exists)
+- All services / كل الخدمات → Services index
+
+### Empty
+- EN: Selected work for this service will appear here as projects are added.
+- AR: ستظهر هنا أعمال هذه الخدمة عند إضافة المشاريع.
+
+Prev / next service uses the core-services order.
+
 ## Home — Client logos
 
 Two full-width rows of logos below featured work. Logos are placeholders until real client marks are supplied. Do not invent client names.
@@ -285,6 +334,18 @@ The panel ends with the WhatsApp Let's Talk CTA.
 - EN description: Selected work by Mister Media, a creative and marketing agency based in Turkey: visual identity, graphic and packaging design, printing, video, web design, digital marketing, and exhibitions.
 - AR title: المشاريع — مستر ميديا وكالة إبداعية وتسويقية
 - AR description: أعمال مختارة من مستر ميديا، وكالة إبداعية وتسويقية مقرها تركيا: الهوية البصرية، التصميم الجرافيكي وتصميم التغليف، الطباعة، الفيديو، تصميم المواقع، التسويق الرقمي، والمعارض.
+
+### Services
+- EN title: Services — Mister Media Creative & Marketing Agency
+- EN description: Mister Media's eight core services: visual identity, graphic and packaging design, printing and packaging, AI-generated video, digital marketing, video production, web design, and exhibitions — from idea to execution, based in Turkey.
+- AR title: الخدمات — مستر ميديا وكالة إبداعية وتسويقية
+- AR description: الخدمات الأساسية الثماني لمستر ميديا: الهوية البصرية، التصميم الجرافيكي وتصميم التغليف، الطباعة والتغليف، الفيديو المولّد بالذكاء الاصطناعي، التسويق الرقمي، إنتاج الفيديو، تصميم المواقع، والمعارض — من الفكرة إلى التنفيذ، ومقرها تركيا.
+
+### Service detail
+- EN title: {name} — Mister Media
+- EN description: {name} by Mister Media, a creative and marketing agency based in Turkey taking brands from idea to execution.
+- AR title: {name} — مستر ميديا
+- AR description: {name} من مستر ميديا، وكالة إبداعية وتسويقية مقرها تركيا تأخذ العلامات التجارية من الفكرة إلى التنفيذ.
 
 ## Legal Pages
 

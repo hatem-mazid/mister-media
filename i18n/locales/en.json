@@ -7,7 +7,11 @@
     "projectsTitle": "Projects — Mister Media Creative & Marketing Agency",
     "projectsDescription": "Selected work by Mister Media, a creative and marketing agency based in Turkey: visual identity, graphic and packaging design, printing, video, web design, digital marketing, and exhibitions.",
     "projectTitle": "{name} — Mister Media",
-    "projectDescription": "{name} by Mister Media, a creative and marketing agency based in Turkey."
+    "projectDescription": "{name} by Mister Media, a creative and marketing agency based in Turkey.",
+    "servicesTitle": "Services — Mister Media Creative & Marketing Agency",
+    "servicesDescription": "Mister Media's eight core services: visual identity, graphic and packaging design, printing and packaging, AI-generated video, digital marketing, video production, web design, and exhibitions — from idea to execution, based in Turkey.",
+    "serviceTitle": "{name} — Mister Media",
+    "serviceDescription": "{name} by Mister Media, a creative and marketing agency based in Turkey taking brands from idea to execution."
   },
   "footer": {
     "brand": "Mister Media",
@@ -200,6 +204,34 @@
       "whatsapp": "WhatsApp",
       "hq": "Turkey",
       "promise": "Idea to Execution"
+    }
+  },
+  "servicesPage": {
+    "headline": "Services",
+    "headlineAccent": "under one roof",
+    "intro": "Mister Media takes brands from idea to execution across eight core services — from visual identity and packaging to printing, film, web, and exhibitions. Printing and packaging sit at the centre of that work.",
+    "explore": "Explore",
+    "viewWork": "View work",
+    "allServices": "All services",
+    "related": "Related work",
+    "emptyWork": "Selected work for this service will appear here as projects are added.",
+    "previous": "Previous service",
+    "next": "Next service",
+    "indexLabel": "Jump to a service",
+    "stats": {
+      "services": "services",
+      "years": "years",
+      "yearsValue": "10+"
+    },
+    "summaries": {
+      "logo-design-visual-identity": "Logo and visual identity that stay consistent across every touchpoint.",
+      "graphic-design-packaging-design": "Graphic and packaging design that stay consistent from the page to the pack in the hand.",
+      "printing-packaging": "Professional printing and packaging, so the design reaches your customer exactly as intended.",
+      "ai-generated-videos": "AI-generated videos as part of taking a brand from idea to execution.",
+      "digital-marketing": "Digital marketing that puts the finished work in front of your audience.",
+      "video-editing-production": "Video editing and production for brand films and campaigns.",
+      "web-design": "Web design that carries the brand from idea to execution on screen.",
+      "exhibition-planning-preparation": "Exhibition planning and preparation that put the finished work in front of your audience."
     }
   },
   "projectsPage": {

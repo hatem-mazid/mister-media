@@ -268,6 +268,8 @@ Animation should be implemented section by section.
 
 Do not create a large global animation system before the actual sections require it.
 
+Page-to-page motion is a single GSAP overlay in `app.vue` (`RouteCurtain`), not a per-page Vue `<Transition>` — so header, footer, and Lenis stay in place while the route swaps under the curtain.
+
 ---
 
 ## 9. Smooth Scrolling
@@ -291,6 +293,7 @@ Lenis configuration should remain simple unless the design requires additional b
 - Recommended Lenis CSS is loaded globally.
 - Anchor links, reduced-motion, and mobile-menu overflow locking are handled with Lenis options (`anchors`, default `respectReducedMotion`, `autoToggle`) plus `lenis.stop()` / `lenis.start()` when the header menu is open.
 - Route changes reset scroll immediately and refresh ScrollTrigger after the page finishes.
+- Path changes also play the page-transition curtain (`RouteCurtain`). Query-only navigations do not.
 
 ---
 
@@ -408,7 +411,7 @@ Do not introduce a CMS or external content system unless explicitly approved.
 ### Current data
 
 - `app/data/services.ts` — service slugs, placeholder category icons, and swatch colors.
-- `app/composables/useServices.ts` — localized names, icons, colors, and routes from i18n.
+- `app/composables/useServices.ts` — localized names, summaries, icons, colors, index, neighbors, and routes from i18n.
 - `app/data/projects.ts` — project slugs, service links, cover media, masonry spans.
 - `app/composables/useProjects.ts` — localized names, service labels, and routes from i18n.
 - `app/data/clients.ts` — placeholder logo sources and intrinsic sizes from `app/assets/images/client-logos/`.
@@ -690,7 +693,7 @@ Two full-width diagonal ticker strips that cross in an X, directly below the her
 
 ### Assumptions
 - Extra reference phrases (years of experience, customer counts, job titles) are not used.
-- Service detail pages remain empty shells until that section is implemented.
+- Service listing and detail pages are implemented at `/services` and `/services/[slug]`.
 
 ---
 
@@ -1052,4 +1055,69 @@ Editorial rows: stroke-only number, project name, category pill, arrow. On a fin
 ### Assumptions
 - Project names, covers, and service assignments remain the approved placeholders; only presentation is new.
 - The deck shows the first five projects.
-- Project detail pages remain empty shells until that section is implemented.
+
+---
+
+## Services — Index & Detail
+
+### Status
+Implemented (first pass). No visual reference; composition derived from the Projects index hero, About process numbering, DESIGN.md, and SECTIONS.md (scroll-based service journey with a 3D product mockup — CSS 3D, no extra library).
+
+### Approach
+`/services` opens with the same headline lockup as Projects, an icon grid of the eight core services, and live counts, then a scroll journey: a sticky service rail and alternating copy/mockup panels. Each panel links to `/services/[slug]`. Detail pages reuse the service name and summary, list related projects from `useProjects()`, and close with the shared WhatsApp contact band.
+
+Service names stay in `services.items.*`. Page copy and the short summaries live in `servicesPage.*`. Summaries are draft copy derived from PROJECT.md; they are not case-study claims.
+
+### Components
+- `app/pages/services/index.vue`
+- `app/pages/services/[slug].vue`
+- `app/components/sections/ServicesHeroSection.vue`
+- `app/components/sections/ServicesShowcaseSection.vue`
+- `app/components/sections/ServiceDetailSection.vue`
+- `app/components/ui/CoverStack.vue` — CSS 3D fan of up to three project covers, or the service icon when none exist
+- `app/composables/useServices.ts` — adds summaries, 1-based index, detail/work routes, and neighbors
+- Locales: `servicesPage.*`, `seo.servicesTitle`, `seo.servicesDescription`, `seo.serviceTitle`, `seo.serviceDescription`
+
+### Layout
+- XL fluid container, hero top padding clears the fixed header (`pt-32` / `md:pt-40`).
+- Hero is a 12-column grid from `lg`: copy (7) and 4×2 icon index (5).
+- Showcase rail is a horizontal sticky strip below `lg` and a sticky sidebar from `lg`. Hash ids (`#service-{slug}`) match `scroll-mt` so the fixed header and mobile rail do not cover the panel.
+- Panels alternate copy/mockup columns on large screens via grid placement (respects RTL).
+- Detail related work uses the same 1/2/3 tile grid as the home featured wall.
+
+### Animation
+- GSAP load-in stagger on the hero; the service count ticks up from zero once on the client.
+- Each showcase panel reveals copy and the 3D stack on enter (`start: top 78%`, once). ScrollTrigger also drives the rail highlight (`top/bottom 45%`).
+- Cover stack uses CSS `perspective` / `rotateY` / `translate3d` rather than Three.js.
+- All of the above are skipped when `prefers-reduced-motion: reduce` is set; the page then renders fully and statically.
+
+### Assumptions
+- Only services that currently have Behance projects show a cover stack and a View work button. Others use the icon fallback and omit the projects-filter link.
+- Service detail empty state is honest placeholder copy, not invented work.
+- 3D mockups are portfolio covers, not generated product shots.
+
+---
+
+## Page transitions
+
+### Status
+Implemented (first pass).
+
+### Approach
+A full-viewport GSAP curtain covers the outgoing page, the route swaps underneath, then the curtain exits upward. Two stacked panels (primary, then dark) keep the motion fast and high-momentum without a Vue page `<Transition>` — that would collapse page height and jump the footer. Copy is not shown; the loading screen remains a separate pass.
+
+### Components
+- `app/components/global/RouteCurtain.vue`
+- Mounted from `app/app.vue`
+
+### Behavior
+- Cover: primary panel then `bg-main`, from the bottom (`power4.in`, ~0.4s). The route does not swap until the curtain is down.
+- Reveal: dark then primary exit upward (`power3.out`, ~0.42s).
+- Lenis is stopped while the overlay is up; scroll resets to top before the reveal.
+- Header and the open menu are covered (`z-1100`).
+
+### Skipped when
+- First load (no previous matched route).
+- Query- or hash-only changes (`to.path === from.path`), including the projects service filter.
+- `prefers-reduced-motion: reduce`.
+- A navigation error aborts and resets the overlay.

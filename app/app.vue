@@ -2,6 +2,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { VueLenis, useLenis } from 'lenis/vue'
+import RouteCurtain from '~/components/global/RouteCurtain.vue'
 
 const route = useRoute()
 const nuxtApp = useNuxtApp()
@@ -54,6 +55,7 @@ nuxtApp.hook('page:finish', () => {
     :options="lenisOptions"
   />
   <NuxtRouteAnnouncer />
+  <RouteCurtain />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

@@ -30,6 +30,51 @@
   --color-light-text: #B4B6B5;
   --color-light-bg: #FFEECF;
   --color-lightest-bg: #FFFFFF;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-spin-y: spin-y 6s linear infinite;
+  --animate-ray-flash: ray-flash 2.2s steps(1, end) infinite;
+}
+
+@keyframes spin-y {
+  from {
+    transform: rotateX(12deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(12deg) rotateY(1turn);
+  }
+}
+
+@keyframes ray-flash {
+  0%,
+  6% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #ffeecf) drop-shadow(0 0 8px #f18f00);
+  }
+  7%,
+  10% {
+    opacity: 0.08;
+    filter: none;
+  }
+  11%,
+  16% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #ffeecf) drop-shadow(0 0 8px #f18f00);
+  }
+  17%,
+  19% {
+    opacity: 0.08;
+    filter: none;
+  }
+  20%,
+  74% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #ffeecf) drop-shadow(0 0 10px #f18f00);
+  }
+  75%,
+  100% {
+    opacity: 0.1;
+    filter: none;
+  }
 }
 
 @theme static {
@@ -39,6 +84,28 @@
 }
 
 @source inline("font-title font-handwritten font-paragraph");
+
+@layer base {
+  a,
+  button,
+  [role="button"],
+  summary,
+  label[for],
+  select,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="file"] {
+    cursor: pointer;
+  }
+
+  :disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
 
 [dir="rtl"] {
   --font-title: "Almarai", sans-serif;

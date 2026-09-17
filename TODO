@@ -5,15 +5,15 @@ ask client:
 
 TOOD:
   # - add social media links to the footer and menu (done; URLs are placeholders until client profiles are supplied)
-  - add services page
+  # - add services page (done; /services listing with scroll showcase + /services/[slug] detail)
   # - add projects page (done; /projects listing with service filter + wall/index layouts)
   # - add project details page (done; Behance gallery modules on /projects/[slug])
-  - fix RTL issues
-  - waiting for services idea
-  - add icons in hero section
+  # - fix RTL issues
+  # - add icons in hero section
   # - add testimonials section
   # - add about and coverage section (done as /about page; coverage section is standalone and can be dropped into home)
   # - add contact us section (done)
   # - add footer
-  - add page transitions
+  # - add page transitions (done; GSAP RouteCurtain overlay between routes, skipped for query-only and reduced motion)
   - add loading screen
+  - fix images sizes from behance

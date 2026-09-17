@@ -8,6 +8,7 @@ withDefaults(defineProps<{
 
 <template>
   <span
+    dir="ltr"
     :class="mark
       ? 'inline-flex shrink-0 overflow-visible'
       : 'inline-flex h-10 w-8 overflow-hidden md:h-12 md:w-[6.25rem]'"

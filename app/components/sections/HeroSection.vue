@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import LampIcon from '~/components/global/LampIcon.vue'
+import { clients } from '~/data/clients'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -14,17 +16,21 @@ const heroRef = useTemplateRef<HTMLElement>('heroRef')
 const stripRef = useTemplateRef<HTMLElement>('stripRef')
 const stripReverseRef = useTemplateRef<HTMLElement>('stripReverseRef')
 
-const eyebrowAvatars = [
-  'https://picsum.photos/seed/mm-avatar-1/96/96',
-  'https://picsum.photos/seed/mm-avatar-2/96/96',
-  'https://picsum.photos/seed/mm-avatar-3/96/96',
-]
+const STACK_SIZE = 3
+const STACK_SHIFT = 12
+const stackTick = ref(0)
 
-const headlineImages = {
-  idea: 'https://picsum.photos/seed/mm-idea/240/240',
-  execution: 'https://picsum.photos/seed/mm-execution/240/240',
-  world: 'https://picsum.photos/seed/mm-world/240/240',
-}
+const stackLogos = computed(() =>
+  Array.from({ length: Math.min(STACK_SIZE, clients.length) }, (_, slot) => {
+    const client = clients[(stackTick.value + slot) % clients.length]!
+    return {
+      ...client,
+      slot,
+    }
+  }),
+)
+
+const stackWidth = `${32 + STACK_SHIFT * (STACK_SIZE - 1)}px`
 
 const stripImages = Array.from({ length: 8 }, (_, index) => ({
   src: `https://picsum.photos/seed/mm-strip-${index + 1}/720/960`,
@@ -38,6 +44,7 @@ const tileClass = 'h-48 w-36 max-w-none shrink-0 rounded-3xl bg-light-bg object-
 
 let ctx: gsap.Context | undefined
 let alive = true
+let logoTimer: ReturnType<typeof window.setInterval> | undefined
 
 function stripRange(strip: HTMLElement, track: HTMLElement) {
   const firstTile = strip.firstElementChild as HTMLElement | null
@@ -73,7 +80,12 @@ onMounted(() => {
     }
   }, hero)
 
-  if (!reduced) setupStrips()
+  if (!reduced) {
+    setupStrips()
+    logoTimer = window.setInterval(() => {
+      stackTick.value = (stackTick.value + 1) % clients.length
+    }, 4000)
+  }
 })
 
 async function setupStrips() {
@@ -121,6 +133,7 @@ async function setupStrips() {
 
 onBeforeUnmount(() => {
   alive = false
+  if (logoTimer) window.clearInterval(logoTimer)
   ctx?.revert()
 })
 </script>
@@ -136,19 +149,30 @@ onBeforeUnmount(() => {
         class="mb-8 flex items-center gap-3 md:mb-10"
         data-hero-animate
       >
-        <div class="flex -space-x-2 rtl:space-x-reverse">
-          <NuxtImg
-            v-for="(src, index) in eyebrowAvatars"
-            :key="src"
-            :src="src"
-            alt=""
-            width="48"
-            height="48"
-            :class="[
-              'size-8 max-w-none rounded-full object-cover ring-2 ring-lightest-bg',
-              index === 0 ? 'relative z-30' : index === 1 ? 'relative z-20' : 'relative z-10',
-            ]"
-          />
+        <div
+          class="relative h-8 shrink-0"
+          :style="{ width: stackWidth }"
+          aria-hidden="true"
+        >
+          <TransitionGroup name="hero-logos">
+            <span
+              v-for="logo in stackLogos"
+              :key="logo.slug"
+              class="absolute top-0 flex size-8 items-center justify-center rounded-full bg-lightest-bg"
+              :style="{
+                zIndex: logo.slot + 1,
+                insetInlineStart: `${logo.slot * STACK_SHIFT}px`,
+              }"
+            >
+              <img
+                :src="logo.src"
+                alt=""
+                :width="logo.width"
+                :height="logo.height"
+                class="size-[70%] max-w-none object-contain"
+              >
+            </span>
+          </TransitionGroup>
         </div>
         <p class="font-paragraph text-sm text-light-text md:text-base">
           {{ t('hero.eyebrow') }}
@@ -164,13 +188,7 @@ onBeforeUnmount(() => {
           data-hero-animate
         >
           <span>{{ t('hero.from') }}</span>
-          <NuxtImg
-            :src="headlineImages.idea"
-            alt=""
-            width="120"
-            height="120"
-            class="size-[0.85em] max-w-none shrink-0 rounded-full object-cover"
-          />
+          <LampIcon class="size-[0.85em] shrink-0 text-primary" />
           <span class="font-handwritten font-normal text-primary">{{ t('hero.idea') }}</span>
         </span>
 
@@ -179,13 +197,15 @@ onBeforeUnmount(() => {
           data-hero-animate
         >
           <span class="font-normal text-light-text">{{ t('hero.to') }}</span>
-          <NuxtImg
-            :src="headlineImages.execution"
-            alt=""
-            width="120"
-            height="120"
-            class="size-[0.85em] max-w-none shrink-0 rounded-full object-cover"
-          />
+          <span
+            class="flex size-[0.85em] shrink-0 items-center justify-center text-primary"
+            aria-hidden="true"
+          >
+            <Icon
+              name="lucide:settings"
+              class="size-[0.7em] animate-spin-slow motion-reduce:animate-none"
+            />
+          </span>
           <span class="text-primary">{{ t('hero.execution') }}</span>
         </span>
 
@@ -194,13 +214,15 @@ onBeforeUnmount(() => {
           data-hero-animate
         >
           <span class="font-normal text-light-text">{{ t('hero.forBrands') }}</span>
-          <NuxtImg
-            :src="headlineImages.world"
-            alt=""
-            width="120"
-            height="120"
-            class="size-[0.85em] max-w-none shrink-0 rounded-full object-cover"
-          />
+          <span
+            class="flex size-[0.85em] shrink-0 items-center justify-center text-primary perspective-[12em]"
+            aria-hidden="true"
+          >
+            <Icon
+              name="lucide:globe-2"
+              class="size-[0.7em] motion-reduce:animate-none"
+            />
+          </span>
           <span>{{ t('hero.world') }}</span>
         </span>
       </h1>
@@ -256,3 +278,41 @@ onBeforeUnmount(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-logos-move {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-logos-enter-active {
+  z-index: 20;
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+    opacity 0.3s ease-out;
+}
+
+.hero-logos-enter-from {
+  opacity: 0;
+  transform: scale(0.4) translateY(-12px);
+}
+
+.hero-logos-leave-active {
+  z-index: 0;
+  transition:
+    transform 0.45s ease,
+    opacity 0.4s ease;
+}
+
+.hero-logos-leave-to {
+  opacity: 0;
+  transform: scale(0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logos-move,
+  .hero-logos-enter-active,
+  .hero-logos-leave-active {
+    transition: none;
+  }
+}
+</style>
