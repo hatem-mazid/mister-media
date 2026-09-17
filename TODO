@@ -7,7 +7,7 @@ TOOD:
   # - add social media links to the footer and menu (done; URLs are placeholders until client profiles are supplied)
   - add services page
   # - add projects page (done; /projects listing with service filter + wall/index layouts)
-  - add project details page
+  # - add project details page (done; Behance gallery modules on /projects/[slug])
   - fix RTL issues
   - waiting for services idea
   - add icons in hero section

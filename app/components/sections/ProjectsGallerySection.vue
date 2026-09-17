@@ -2,20 +2,6 @@
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-type WallSpan =
-  | 'solo'
-  | 'duo'
-  | 'trio'
-  | 'hero'
-  | 'landscape'
-  | 'tall'
-  | 'wide'
-  | 'third'
-  | 'half'
-  | 'narrow'
-  | 'full'
-
 const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
@@ -55,78 +41,9 @@ const filtered = computed(() =>
     : projects.value.filter(project => project.service === activeService.value),
 )
 
-const spanClass: Record<WallSpan, string> = {
-  solo: 'sm:col-span-2 sm:row-span-2 md:col-span-6 lg:col-span-12 lg:row-span-3',
-  duo: 'sm:col-span-1 sm:row-span-2 md:col-span-3 lg:col-span-6 lg:row-span-3',
-  trio: 'sm:col-span-2 sm:row-span-2 md:col-span-2 md:row-span-2 lg:col-span-4 lg:row-span-2',
-  hero: 'sm:col-span-2 sm:row-span-2 md:col-span-4 lg:col-span-7 lg:row-span-2',
-  landscape: 'sm:col-span-1 md:col-span-2 lg:col-span-5 lg:row-span-1',
-  tall: 'sm:col-span-1 sm:row-span-2 md:col-span-2 lg:col-span-5 lg:row-span-2',
-  wide: 'sm:col-span-1 md:col-span-4 lg:col-span-7 lg:row-span-1',
-  third: 'sm:col-span-1 md:col-span-2 lg:col-span-4 lg:row-span-1',
-  half: 'sm:col-span-1 md:col-span-3 lg:col-span-6 lg:row-span-1',
-  narrow: 'sm:col-span-1 md:col-span-2 lg:col-span-3 lg:row-span-1',
-  full: 'sm:col-span-2 md:col-span-6 lg:col-span-12 lg:row-span-1',
-}
-
-const spanSizes: Record<WallSpan, string> = {
-  solo: 'sm:100vw lg:90vw',
-  duo: 'sm:50vw lg:45vw',
-  trio: 'sm:100vw lg:33vw',
-  hero: 'sm:100vw lg:58vw',
-  landscape: 'sm:50vw lg:42vw',
-  tall: 'sm:50vw lg:42vw',
-  wide: 'sm:50vw md:66vw lg:58vw',
-  third: 'sm:50vw lg:33vw',
-  half: 'sm:50vw lg:50vw',
-  narrow: 'sm:50vw lg:25vw',
-  full: 'sm:100vw lg:90vw',
-}
-
-// Each group fills a whole 12-column band, so the wall never ends on a hole
-// no matter how many projects a filter leaves behind.
-const groups: WallSpan[][] = [
-  ['hero', 'landscape', 'landscape'],
-  ['third', 'third', 'third'],
-  ['tall', 'wide', 'wide'],
-  ['half', 'half'],
-  ['narrow', 'narrow', 'half'],
-]
-
-function spansFor(count: number): WallSpan[] {
-  if (count === 1) return ['solo']
-  if (count === 2) return ['duo', 'duo']
-  if (count === 3) return ['trio', 'trio', 'trio']
-
-  const spans: WallSpan[] = []
-  let cursor = 0
-
-  while (spans.length < count) {
-    const remaining = count - spans.length
-    let group = groups[cursor % groups.length] ?? []
-
-    if (group.length > remaining) {
-      group = remaining === 1 ? ['full'] : ['half', 'half']
-    }
-
-    spans.push(...group)
-    cursor += 1
-  }
-
-  return spans.slice(0, count)
-}
-
 // Every tile stays mounted; a project that drops out of the filter is hidden so
 // Flip can treat it as a leaving element instead of an unmount.
-const layout = computed(() => {
-  const spans = spansFor(filtered.value.length)
-  const map = new Map<string, WallSpan>()
-  filtered.value.forEach((project, index) => {
-    const span = spans[index]
-    if (span) map.set(project.slug, span)
-  })
-  return map
-})
+const visible = computed(() => new Set(filtered.value.map(project => project.slug)))
 
 function reduced() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -426,28 +343,28 @@ onBeforeUnmount(() => {
       <div
         v-if="view === 'wall'"
         ref="wallRef"
-        class="grid min-h-64 auto-rows-64 grid-flow-row-dense grid-cols-1 gap-4 sm:min-h-56 sm:auto-rows-56 sm:grid-cols-2 md:min-h-52 md:auto-rows-52 md:grid-cols-6 md:gap-5 lg:min-h-60 lg:auto-rows-60 lg:grid-cols-12 lg:gap-6 xl:min-h-68 xl:auto-rows-68"
+        class="grid min-h-64 grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
       >
-        <UiProjectTile
+        <div
           v-for="project in projects"
           :key="project.slug"
-          :to="project.to"
-          :name="project.name"
-          :category="project.serviceName"
-          :category-icon="project.serviceIcon"
-          :category-color="project.serviceColor"
-          :cover="project.cover"
-          :width="project.width"
-          :height="project.height"
-          :motion-src="project.motionSrc"
-          :sizes="spanSizes[layout.get(project.slug) ?? 'third']"
-          :eager="true"
-          :class="layout.has(project.slug)
-            ? spanClass[layout.get(project.slug) ?? 'third']
-            : 'hidden'"
+          :class="{ hidden: !visible.has(project.slug) }"
           data-wall-tile
           data-gallery-animate
-        />
+        >
+          <UiProjectTile
+            :to="project.to"
+            :name="project.name"
+            :category="project.serviceName"
+            :category-icon="project.serviceIcon"
+            :category-color="project.serviceColor"
+            :cover="project.cover"
+            :width="project.width"
+            :height="project.height"
+            :motion-src="project.motionSrc"
+            eager
+          />
+        </div>
       </div>
 
       <div v-else>

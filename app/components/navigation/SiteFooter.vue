@@ -177,7 +177,7 @@ onBeforeUnmount(() => {
         <span>{{ brandParts.start }}</span>
           <Logo
             mark
-            class="h-[1.4em]"
+            class="h-[1.4em] drop-shadow-[0_0_1px_var(--color-light-bg)] drop-shadow-[0_8px_18px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
           />
         <span>{{ brandParts.end }}</span>
       </p>

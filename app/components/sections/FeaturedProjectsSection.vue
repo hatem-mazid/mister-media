@@ -1,37 +1,12 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import type { ProjectSpan } from '~/data/projects'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
 const { featured } = useProjects()
 
 const sectionRef = useTemplateRef<HTMLElement>('sectionRef')
-
-const spanClass: Record<ProjectSpan, string> = {
-  hero: 'row-span-2 sm:col-span-2 md:col-span-4 lg:col-span-7',
-  landscape: 'sm:col-span-1 md:col-span-2 lg:col-span-5',
-  third: 'sm:col-span-1 md:col-span-2 lg:col-span-4',
-  tall: 'row-span-2 sm:col-span-1 md:col-span-2 lg:col-span-5',
-  wide: 'sm:col-span-1 sm:row-span-2 md:col-span-4 md:row-span-1 lg:col-span-7 lg:row-span-1',
-  splitWide: 'sm:col-span-1 md:col-span-2 lg:col-span-4',
-  splitNarrow: 'sm:col-span-1 md:col-span-2 lg:col-span-3',
-  half: 'sm:col-span-1 md:col-span-3 lg:col-span-6',
-  band: 'sm:col-span-2 md:col-span-3 lg:col-span-6',
-}
-
-const spanSizes: Record<ProjectSpan, string> = {
-  hero: 'sm:100vw lg:60vw',
-  landscape: 'sm:50vw lg:42vw',
-  third: 'sm:50vw lg:33vw',
-  tall: 'sm:50vw lg:42vw',
-  wide: 'sm:100vw md:66vw lg:58vw',
-  splitWide: 'sm:50vw lg:33vw',
-  splitNarrow: 'sm:50vw lg:25vw',
-  half: 'sm:50vw lg:50vw',
-  band: 'sm:100vw lg:50vw',
-}
 
 let ctx: gsap.Context | undefined
 
@@ -80,9 +55,7 @@ onBeforeUnmount(() => {
         data-projects-animate
       />
 
-      <div
-        class="grid grid-cols-1 auto-rows-64 gap-4 sm:grid-cols-2 sm:auto-rows-56 md:grid-cols-6 md:auto-rows-52 md:gap-5 lg:grid-cols-12 lg:auto-rows-60 lg:gap-6 xl:auto-rows-68"
-      >
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         <UiProjectTile
           v-for="(project, index) in featured"
           :key="project.slug"
@@ -95,9 +68,7 @@ onBeforeUnmount(() => {
           :width="project.width"
           :height="project.height"
           :motion-src="project.motionSrc"
-          :sizes="spanSizes[project.span]"
-          :eager="index === 0"
-          :class="spanClass[project.span]"
+          :eager="index < 3"
           data-projects-animate
         />
       </div>

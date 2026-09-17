@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     public: {
       whatsappUrl: 'https://wa.me/',
       instagramUrl: 'https://www.instagram.com/',
-      behanceUrl: 'https://www.behance.net/',
+      behanceUrl: 'https://www.behance.net/Fouad-Mazid',
       facebookUrl: 'https://www.facebook.com/',
       youtubeUrl: 'https://www.youtube.com/',
     },
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    domains: ['picsum.photos', 'fastly.picsum.photos'],
+    domains: ['picsum.photos', 'fastly.picsum.photos', 'mir-s3-cdn-cf.behance.net'],
   },
 
   i18n: {

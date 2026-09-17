@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
   sizes?: string
   eager?: boolean
 }>(), {
-  sizes: 'sm:100vw md:50vw lg:50vw',
+  sizes: '100vw sm:50vw lg:33vw',
   eager: false,
 })
 
@@ -42,7 +42,8 @@ function leave() {
 <template>
   <NuxtLink
     :to="to"
-    class="group relative block h-full min-h-0 overflow-hidden rounded-3xl bg-light-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+    class="group relative block w-full overflow-hidden rounded-3xl bg-light-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+    :style="{ aspectRatio: `${width} / ${height}` }"
     :aria-label="`${name}, ${category}`"
     data-project-tile
     @pointerenter="enter"

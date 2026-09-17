@@ -5,7 +5,9 @@
     "aboutTitle": "About Mister Media — Creative & Marketing Agency in Turkey",
     "aboutDescription": "Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world.",
     "projectsTitle": "Projects — Mister Media Creative & Marketing Agency",
-    "projectsDescription": "Selected work by Mister Media, a creative and marketing agency based in Turkey: visual identity, graphic and packaging design, printing, video, web design, digital marketing, and exhibitions."
+    "projectsDescription": "Selected work by Mister Media, a creative and marketing agency based in Turkey: visual identity, graphic and packaging design, printing, video, web design, digital marketing, and exhibitions.",
+    "projectTitle": "{name} — Mister Media",
+    "projectDescription": "{name} by Mister Media, a creative and marketing agency based in Turkey."
   },
   "footer": {
     "brand": "Mister Media",
@@ -229,21 +231,15 @@
   "projects": {
     "heading": "Our Works",
     "headingAccent": "featured",
-    "viewAll": "View All Projects",
-    "items": {
-      "brand-identity-system": "Brand Identity System",
-      "product-packaging": "Product Packaging",
-      "print-production": "Print Production",
-      "digital-campaign": "Digital Campaign",
-      "graphic-series": "Graphic Series",
-      "website-design": "Website Design",
-      "motion-film": "Motion Film",
-      "exhibition-stand": "Exhibition Stand",
-      "pack-production": "Pack Production",
-      "visual-language": "Visual Language",
-      "generated-film": "Generated Film",
-      "social-campaign": "Social Campaign"
-    }
+    "viewAll": "View All Projects"
+  },
+  "projectDetail": {
+    "eyebrow": "Project",
+    "back": "All projects",
+    "onBehance": "View on Behance",
+    "gallery": "Project gallery",
+    "previous": "Previous project",
+    "next": "Next project"
   },
   "legal": {
     "pending": "Final legal wording will be published here once it has been provided or approved by Mister Media or their legal advisor. This page will cover:",

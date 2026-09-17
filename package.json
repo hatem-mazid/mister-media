@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "projects:behance": "node scripts/fetch-behance-projects.mjs"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
