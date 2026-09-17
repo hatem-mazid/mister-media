@@ -6,7 +6,7 @@ ask client:
 TOOD:
   # - add social media links to the footer and menu (done; URLs are placeholders until client profiles are supplied)
   - add services page
-  - add projects page
+  # - add projects page (done; /projects listing with service filter + wall/index layouts)
   - add project details page
   - fix RTL issues
   - waiting for services idea

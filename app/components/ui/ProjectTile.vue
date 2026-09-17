@@ -18,10 +18,15 @@ const props = withDefaults(defineProps<{
 
 const videoRef = useTemplateRef<HTMLVideoElement>('videoRef')
 const hovering = ref(false)
+const loaded = ref(props.eager)
 
 const isVideo = computed(() =>
   Boolean(props.motionSrc && /\.(mp4|webm)(\?|$)/i.test(props.motionSrc)),
 )
+
+function onLoad() {
+  loaded.value = true
+}
 
 function enter() {
   hovering.value = true
@@ -52,7 +57,9 @@ function leave() {
       :height="height"
       :sizes="sizes"
       :loading="eager ? 'eager' : 'lazy'"
-      class="absolute inset-0 size-full max-w-none object-cover transition-transform duration-300 ease-out motion-safe:group-hover:scale-110"
+      class="absolute inset-0 size-full max-w-none object-cover transition-[opacity,transform] duration-300 ease-out motion-safe:group-hover:scale-110"
+      :class="loaded ? 'opacity-100' : 'opacity-0'"
+      @load="onLoad"
     />
 
     <NuxtImg

@@ -91,6 +91,42 @@ Editorial project wall. Titles are placeholders until real project names are sup
 
 Do not invent client names, case-study claims, or project descriptions.
 
+## Projects — Index
+
+Full portfolio page at `/projects`. It presents the same approved placeholder projects as the home wall, so no new project names or claims are introduced.
+
+### Eyebrow
+- EN: Selected Work
+- AR: أعمال مختارة
+
+### Headline
+- EN: Our Works + handwritten in full
+- AR: أعمالنا + handwritten بالكامل
+
+"in full" distinguishes the page from the home section, which shows featured work only.
+
+### Intro
+- EN: A cross-section of what Mister Media does, across all eight core services — from visual identity and packaging to printing, film, web, and exhibitions.
+- AR: لمحة عمّا تقدّمه مستر ميديا، عبر خدماتها الأساسية الثماني — من الهوية البصرية والتغليف إلى الطباعة والفيديو والمواقع والمعارض.
+
+"Eight core services" is the count of core services in PROJECT.md. Both counts shown in the hero are derived from the data, so they cannot drift from what the page lists.
+
+### Counts
+- projects / مشاريع — total number of projects
+- services / خدمات — total number of core services
+
+### Browse controls
+- Filter by service / تصفية حسب الخدمة
+- All / الكل (with the total count; each service pill carries its own count)
+- Layout / العرض — Wall / شبكة, Index / قائمة
+- Count line: number + project | projects / مشروع | مشاريع
+
+### Index columns
+- Project / المشروع
+- Service / الخدمة
+
+The page closes with the shared WhatsApp contact band.
+
 ## Home — Client logos
 
 Two full-width rows of logos below featured work. Logos are placeholders until real client marks are supplied. Do not invent client names.
@@ -243,6 +279,12 @@ The panel ends with the WhatsApp Let's Talk CTA.
 - EN description: Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world.
 - AR title: عن مستر ميديا — وكالة إبداعية وتسويقية في تركيا
 - AR description: مستر ميديا وكالة إبداعية وتسويقية راسخة مقرها تركيا، بخبرة تزيد عن 10 سنوات، تأخذ العلامات التجارية من الفكرة إلى التنفيذ في الهوية البصرية والتصميم الجرافيكي والطباعة والتغليف والفيديو والمواقع والتسويق الرقمي لعملاء حول العالم.
+
+### Projects
+- EN title: Projects — Mister Media Creative & Marketing Agency
+- EN description: Selected work by Mister Media, a creative and marketing agency based in Turkey: visual identity, graphic and packaging design, printing, video, web design, digital marketing, and exhibitions.
+- AR title: المشاريع — مستر ميديا وكالة إبداعية وتسويقية
+- AR description: أعمال مختارة من مستر ميديا، وكالة إبداعية وتسويقية مقرها تركيا: الهوية البصرية، التصميم الجرافيكي وتصميم التغليف، الطباعة، الفيديو، تصميم المواقع، التسويق الرقمي، والمعارض.
 
 ## Legal Pages
 

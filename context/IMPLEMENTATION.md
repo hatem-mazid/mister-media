@@ -999,3 +999,57 @@ Dark rounded panel with a dot-matrix world map (Robinson projection) rendered as
 - Market list is a placeholder (PROJECT.md §6 says countries will be supplied later). Replace codes in `app/data/coverage.ts` and names in `coverage.countries.*`; the map and layout need no changes.
 - Dataset labels disputed territories as `-99`; they are drawn as base land only.
 - Antarctica is omitted from the generated map.
+
+---
+
+## Projects — Index
+
+### Status
+Implemented (first pass). No visual reference; composition derived from the home Featured Projects wall and DESIGN.md.
+
+### Approach
+Full portfolio index at `/projects`. Page opener pairs the headline lockup with a shuffling deck of project covers and live counts, then a browse section that offers the same set of projects in two layouts (image wall / editorial list), filterable by service, and closes with the shared WhatsApp contact band.
+
+The home section shows `featured` projects; this page shows every project from `useProjects()`. No new project records or names were invented — the page presents the twelve approved placeholders from CONTENT.md.
+
+### Components
+- `app/pages/projects/index.vue`
+- `app/components/sections/ProjectsHeroSection.vue`
+- `app/components/sections/ProjectsGallerySection.vue`
+- Reuses `app/components/ui/ProjectTile.vue`, `CategoryPill.vue`, and `SectionsContactSection`
+- `app/composables/useProjects.ts`, `app/composables/useServices.ts`
+- Locales: `projectsPage.*`, `seo.projectsTitle`, `seo.projectsDescription`
+
+### Layout
+- XL fluid container (`max-w-360`), hero top padding clears the fixed header (`pt-32` / `md:pt-40`).
+- Hero is a 12-column grid from `lg`: copy (7 columns) and cover deck (5 columns), vertically centred. The deck is a Swiper `EffectCards` stack (`max-w-sm`, `aspect-4/5`); the wrapper carries `px-8 py-6` so the fanned cards never clip at the viewport edge in either direction.
+- Browse section sits on the light background so it reads as a distinct tool area.
+- Service filter pills scroll sideways below `md` and wrap from `md`, keeping the work near the top on phones.
+- Wall is the same grid vocabulary as the home wall (`auto-rows-*`, 12 columns, dense flow).
+
+### Wall composition
+Spans are not stored per project; they are derived from the position in the *filtered* list. `groups` holds span sets that each fill a complete 12-column band (`hero + landscape + landscape`, `third × 3`, `tall + wide + wide`, `half × 2`, `narrow + narrow + half`), with dedicated single/pair/triple layouts for very small results. Any filter therefore produces a wall with no leftover holes, verified by measuring that every row band sums to 12 columns.
+
+### Filtering
+The active service lives in the URL (`?service=<slug>`) so a filtered wall can be linked and shared, and only services that actually have projects appear as pills, each with its count. `app/router.options.ts` now returns `false` for query-only navigations so changing a filter does not scroll the page to the top.
+
+### Index view
+Editorial rows: stroke-only number, project name, category pill, arrow. On a fine pointer, hovering or focusing a row floats the project cover next to the cursor. All covers for the current filter are rendered once and cross-faded by opacity, so switching rows never blanks the preview; the follow tweens are built on first use because the preview only exists while the index view is mounted.
+
+### Typography
+- Hero headline mirrors the About hero: title face, `clamp(2.25rem, 5.8vw, 5.5rem)`, with the handwritten accent overlapping its end.
+- Counts use the same number + handwritten lockup as the About facts.
+- Index row names use the title face; the stroke number matches the About process cards.
+
+### Animation
+- GSAP load-in stagger on the hero; counts tick up from zero once on the client (the real totals are rendered for SSR).
+- Deck is Swiper `EffectCards` (no custom card stack): grab cursor, loop, autoplay every 3.2s with `pauseOnMouseEnter`. Slide shadows are off so the brand ring on each card stays clean. Remounts on `dir` change like the testimonials Swiper.
+- GSAP ScrollTrigger stagger reveals the browse section.
+- Filter changes ease the wall height from the outgoing layout to the incoming one so the contact band below does not jump into view. Flip uses `absoluteOnLeave` (only leaving tiles leave the flow). Incoming tiles stay in-grid and keep `eager` covers so a cream tile is already there while the image paints; previously they faded in from opacity 0 after a collapsed grid.
+- Switching layouts staggers the new children in.
+- All of the above are skipped when `prefers-reduced-motion: reduce` is set; the page then renders fully and statically.
+
+### Assumptions
+- Project names, covers, and service assignments remain the approved placeholders; only presentation is new.
+- The deck shows the first five projects.
+- Project detail pages remain empty shells until that section is implemented.

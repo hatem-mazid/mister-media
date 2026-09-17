@@ -1,12 +1,17 @@
 import type { RouterConfig } from '@nuxt/schema'
 
 export default {
-  scrollBehavior(to, _from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
         el: to.hash,
         top: 0,
       }
+    }
+
+    // Query-only changes (in-page state such as the projects filter) must not scroll.
+    if (to.path === from.path) {
+      return false
     }
 
     if (savedPosition) {
