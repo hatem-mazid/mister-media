@@ -10,8 +10,11 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-dvh overflow-x-hidden bg-lightest-bg font-paragraph text-main">
+  <div class="min-h-dvh overflow-x-hidden bg-main font-paragraph text-main">
     <NavigationSiteHeader />
-    <slot />
+    <div class="relative z-10 bg-lightest-bg">
+      <slot />
+    </div>
+    <NavigationSiteFooter />
   </div>
 </template>

@@ -37,6 +37,7 @@ const stripImagesReverse = Array.from({ length: 8 }, (_, index) => ({
 const tileClass = 'h-48 w-36 max-w-none shrink-0 rounded-3xl bg-light-bg object-cover sm:h-64 sm:w-48 md:h-80 md:w-60 lg:h-96 lg:w-72'
 
 let ctx: gsap.Context | undefined
+let alive = true
 
 function stripRange(strip: HTMLElement, track: HTMLElement) {
   const firstTile = strip.firstElementChild as HTMLElement | null
@@ -49,12 +50,33 @@ function stripRange(strip: HTMLElement, track: HTMLElement) {
   }
 }
 
-onMounted(async () => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+onMounted(() => {
+  alive = true
+  const hero = heroRef.value
+  if (!hero) return
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   gsap.registerPlugin(ScrollTrigger)
   ScrollTrigger.config({ ignoreMobileResize: true })
 
+  ctx = gsap.context(() => {
+    if (!reduced) {
+      gsap.from('[data-hero-animate]', {
+        y: 40,
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.1,
+      })
+    }
+  }, hero)
+
+  if (!reduced) setupStrips()
+})
+
+async function setupStrips() {
   await nextTick()
 
   const strips = [stripRef.value, stripReverseRef.value].filter((strip): strip is HTMLElement => Boolean(strip))
@@ -62,9 +84,9 @@ onMounted(async () => {
   await Promise.all(images.map(image => image.decode().catch(() => undefined)))
 
   const hero = heroRef.value
-  if (!hero || strips.length < 2) return
+  if (!alive || !ctx || !hero || strips.length < 2) return
 
-  ctx = gsap.context(() => {
+  ctx.add(() => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: hero,
@@ -94,10 +116,11 @@ onMounted(async () => {
         ease: 'none',
       }, 0)
     })
-  }, hero)
-})
+  })
+}
 
 onBeforeUnmount(() => {
+  alive = false
   ctx?.revert()
 })
 </script>
@@ -109,7 +132,10 @@ onBeforeUnmount(() => {
     class="flex min-h-dvh flex-col overflow-hidden bg-lightest-bg"
   >
     <div class="flex flex-col items-center justify-center px-6 pt-32 pb-20 md:px-8 md:pt-40 md:pb-24">
-      <div class="mb-8 flex items-center gap-3 md:mb-10">
+      <div
+        class="mb-8 flex items-center gap-3 md:mb-10"
+        data-hero-animate
+      >
         <div class="flex -space-x-2 rtl:space-x-reverse">
           <NuxtImg
             v-for="(src, index) in eyebrowAvatars"
@@ -133,7 +159,10 @@ onBeforeUnmount(() => {
         id="hero-heading"
         class="flex max-w-6xl flex-col items-center gap-y-2 text-center font-title text-[clamp(2.25rem,5.8vw,5.5rem)] leading-[0.95] font-semibold tracking-tight text-main md:gap-y-3"
       >
-        <span class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5">
+        <span
+          class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5"
+          data-hero-animate
+        >
           <span>{{ t('hero.from') }}</span>
           <NuxtImg
             :src="headlineImages.idea"
@@ -145,7 +174,10 @@ onBeforeUnmount(() => {
           <span class="font-handwritten font-normal text-primary">{{ t('hero.idea') }}</span>
         </span>
 
-        <span class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5">
+        <span
+          class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5"
+          data-hero-animate
+        >
           <span class="font-normal text-light-text">{{ t('hero.to') }}</span>
           <NuxtImg
             :src="headlineImages.execution"
@@ -157,7 +189,10 @@ onBeforeUnmount(() => {
           <span class="text-primary">{{ t('hero.execution') }}</span>
         </span>
 
-        <span class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5">
+        <span
+          class="flex flex-wrap items-center justify-center gap-x-3 md:gap-x-5"
+          data-hero-animate
+        >
           <span class="font-normal text-light-text">{{ t('hero.forBrands') }}</span>
           <NuxtImg
             :src="headlineImages.world"
@@ -170,7 +205,10 @@ onBeforeUnmount(() => {
         </span>
       </h1>
 
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-3 md:mt-12 md:gap-4">
+      <div
+        class="mt-10 flex flex-wrap items-center justify-center gap-3 md:mt-12 md:gap-4"
+        data-hero-animate
+      >
         <UiButton :to="localePath('/projects')">
           {{ t('hero.ourWorks') }}
         </UiButton>
@@ -180,7 +218,11 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <div dir="ltr" class="flex w-full shrink-0 flex-col items-start gap-2 overflow-hidden px-0 pb-6 md:pb-8">
+    <div
+      dir="ltr"
+      class="flex w-full shrink-0 flex-col items-start gap-2 overflow-hidden px-0 pb-6 md:pb-8"
+      data-hero-animate
+    >
       <div
         ref="stripRef"
         dir="ltr"

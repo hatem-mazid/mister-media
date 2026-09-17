@@ -4,13 +4,16 @@ ask client:
 
 
 TOOD:
-  - add social media links to the footer and menu
+  # - add social media links to the footer and menu (done; URLs are placeholders until client profiles are supplied)
+  - add services page
+  - add projects page
+  - add project details page
   - fix RTL issues
   - waiting for services idea
   - add icons in hero section
-  - add testimonials section
-  - add about and coverage section (done as /about page; coverage section is standalone and can be dropped into home)
-  - add contact us section (done)
-  - add footer
+  # - add testimonials section
+  # - add about and coverage section (done as /about page; coverage section is standalone and can be dropped into home)
+  # - add contact us section (done)
+  # - add footer
   - add page transitions
-  -
+  - add loading screen

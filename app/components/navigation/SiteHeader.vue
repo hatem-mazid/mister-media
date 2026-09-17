@@ -9,6 +9,7 @@ const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
 const config = useRuntimeConfig()
+const { links: socialLinks } = useSocial()
 
 const open = ref(false)
 const menuId = 'site-menu'
@@ -152,8 +153,8 @@ onBeforeUnmount(() => {
       aria-modal="true"
       :aria-label="t('nav.menuLabel')"
     >
-      <nav class="flex h-full flex-col items-center justify-center gap-8 px-6 pb-16 md:gap-10">
-        <ul class="flex flex-col items-center gap-5 md:gap-7">
+      <nav class="flex h-full flex-col items-center justify-center gap-6 overflow-y-auto px-6 pt-28 pb-10 md:gap-10 md:pb-16">
+        <ul class="flex flex-col items-center gap-4 md:gap-7">
           <li v-for="item in navItems" :key="item.key" data-menu-item>
             <NuxtLink
               :to="localePath(item.to)"
@@ -177,6 +178,29 @@ onBeforeUnmount(() => {
             {{ item.name }}
           </NuxtLink>
         </div>
+
+        <ul
+          class="flex items-center gap-3"
+          data-menu-item
+        >
+          <li
+            v-for="link in socialLinks"
+            :key="link.key"
+          >
+            <a
+              :href="link.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="link.label"
+              class="flex size-12 items-center justify-center rounded-full bg-main text-lightest-bg transition-colors hover:bg-primary hover:text-main focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            >
+              <Icon
+                :name="link.icon"
+                class="size-5"
+              />
+            </a>
+          </li>
+        </ul>
       </nav>
     </div>
   </Teleport>

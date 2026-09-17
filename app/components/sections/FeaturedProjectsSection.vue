@@ -43,11 +43,8 @@ onMounted(() => {
   const section = sectionRef.value
   if (!section) return
 
-  const tiles = section.querySelectorAll('[data-project-tile]')
-  if (!tiles.length) return
-
   ctx = gsap.context(() => {
-    gsap.from(tiles, {
+    gsap.from('[data-projects-animate]', {
       y: 40,
       autoAlpha: 0,
       duration: 0.5,
@@ -80,6 +77,7 @@ onBeforeUnmount(() => {
         class="mb-8 scroll-mt-28 md:mb-12"
         :title="t('projects.heading')"
         :handwritten="t('projects.headingAccent')"
+        data-projects-animate
       />
 
       <div
@@ -100,10 +98,14 @@ onBeforeUnmount(() => {
           :sizes="spanSizes[project.span]"
           :eager="index === 0"
           :class="spanClass[project.span]"
+          data-projects-animate
         />
       </div>
 
-      <div class="mt-12 flex justify-center md:mt-16">
+      <div
+        class="mt-12 flex justify-center md:mt-16"
+        data-projects-animate
+      >
         <UiButton :to="localePath('/projects')">
           {{ t('projects.viewAll') }}
         </UiButton>

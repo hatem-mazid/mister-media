@@ -45,3 +45,23 @@
   --font-handwritten: "Shekari", cursive;
   --font-paragraph: "Almarai", sans-serif;
 }
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-main);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-main);
+}
+
+.bg-primary ::selection {
+  background-color: var(--color-main);
+  color: var(--color-lightest-bg);
+}
+
+.bg-primary ::-moz-selection {
+  background-color: var(--color-main);
+  color: var(--color-lightest-bg);
+}

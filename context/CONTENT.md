@@ -243,3 +243,53 @@ The panel ends with the WhatsApp Let's Talk CTA.
 - EN description: Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world.
 - AR title: عن مستر ميديا — وكالة إبداعية وتسويقية في تركيا
 - AR description: مستر ميديا وكالة إبداعية وتسويقية راسخة مقرها تركيا، بخبرة تزيد عن 10 سنوات، تأخذ العلامات التجارية من الفكرة إلى التنفيذ في الهوية البصرية والتصميم الجرافيكي والطباعة والتغليف والفيديو والمواقع والتسويق الرقمي لعملاء حول العالم.
+
+## Legal Pages
+
+The website should include dedicated legal pages accessible from the footer.
+
+### Privacy Policy
+
+A Privacy Policy page should explain how Mister Media collects, uses, stores, and protects user information.
+
+It should cover relevant website functionality such as:
+
+* Contact and WhatsApp inquiries
+* Contact forms, if used
+* Analytics and tracking tools, if used
+* Cookies, if used
+* Embedded third-party services
+* Marketing or communication data, if applicable
+* User rights and applicable data protection requirements
+
+The final legal content must be provided or approved by Mister Media or their legal advisor. Do not invent legal claims or requirements during implementation.
+
+### Terms of Service
+
+A Terms of Service page should define the general conditions for using the Mister Media website.
+
+It may cover:
+
+* Website usage
+* Intellectual property and copyright
+* Portfolio and project imagery
+* Website content ownership
+* Third-party links and services
+* Website availability and limitations
+* General liability provisions
+
+The final legal content must be provided or approved by Mister Media or their legal advisor.
+
+### Cookie Policy / Consent
+
+If the website uses cookies, analytics, advertising, tracking, or other technologies that require user consent or disclosure, the appropriate cookie information and consent mechanism should be included.
+
+The exact requirements and legal wording should be confirmed by Mister Media or their legal advisor.
+
+### Placement
+
+* Privacy Policy and Terms of Service should be linked from the global footer.
+* Cookie information/consent should be accessible where required.
+* Legal pages should support English and Arabic.
+* Turkish should be supported later if the website adds Turkish localization.
+* Legal pages should use the same global layout, typography, navigation, and footer as the rest of the website while keeping the content presentation simple and readable.

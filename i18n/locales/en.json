@@ -5,6 +5,25 @@
     "aboutTitle": "About Mister Media — Creative & Marketing Agency in Turkey",
     "aboutDescription": "Mister Media is an established creative and marketing agency based in Turkey with more than 10 years of experience, taking brands from idea to execution across branding, graphic design, printing, packaging, video, web, and digital marketing for clients around the world."
   },
+  "footer": {
+    "brand": "Mister Media",
+    "socialLabel": "Social",
+    "columns": {
+      "pages": "Pages",
+      "works": "Works",
+      "legal": "Legal"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "social": {
+      "instagram": "Instagram",
+      "behance": "Behance",
+      "facebook": "Facebook",
+      "youtube": "YouTube"
+    }
+  },
   "nav": {
     "logoAlt": "Mister Media",
     "letsTalk": "Let's Talk",
@@ -196,6 +215,37 @@
       "visual-language": "Visual Language",
       "generated-film": "Generated Film",
       "social-campaign": "Social Campaign"
+    }
+  },
+  "legal": {
+    "pending": "Final legal wording will be published here once it has been provided or approved by Mister Media or their legal advisor. This page will cover:",
+    "privacy": {
+      "title": "Privacy Policy — Mister Media",
+      "heading": "Privacy Policy",
+      "description": "How Mister Media collects, uses, stores, and protects information on this website. Final legal wording will be published once approved.",
+      "topics": {
+        "contact": "Contact and WhatsApp inquiries",
+        "forms": "Contact forms, if used",
+        "analytics": "Analytics and tracking tools, if used",
+        "cookies": "Cookies, if used",
+        "embeds": "Embedded third-party services",
+        "marketing": "Marketing or communication data, if applicable",
+        "rights": "User rights and applicable data protection requirements"
+      }
+    },
+    "terms": {
+      "title": "Terms of Service — Mister Media",
+      "heading": "Terms of Service",
+      "description": "The general conditions for using the Mister Media website. Final legal wording will be published once approved.",
+      "topics": {
+        "usage": "Website usage",
+        "ip": "Intellectual property and copyright",
+        "portfolio": "Portfolio and project imagery",
+        "ownership": "Website content ownership",
+        "thirdParty": "Third-party links and services",
+        "availability": "Website availability and limitations",
+        "liability": "General liability provisions"
+      }
     }
   }
 }

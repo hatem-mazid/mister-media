@@ -20,6 +20,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       whatsappUrl: 'https://wa.me/',
+      instagramUrl: 'https://www.instagram.com/',
+      behanceUrl: 'https://www.behance.net/',
+      facebookUrl: 'https://www.facebook.com/',
+      youtubeUrl: 'https://www.youtube.com/',
     },
   },
 
